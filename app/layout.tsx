@@ -1,4 +1,12 @@
 import type { Metadata } from "next";
+import { Orbitron } from "next/font/google";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+});
+
+export { orbitron };
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
