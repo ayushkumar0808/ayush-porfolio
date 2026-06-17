@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+  title: "Ayush-Portfolio",
   description: "Created by Ayush",
 };
 
