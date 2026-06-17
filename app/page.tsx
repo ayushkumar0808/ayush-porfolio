@@ -9,7 +9,7 @@ import {
   SiCplusplus,
   SiJavascript,
   SiTypescript,
-  SiJouav,
+  SiOpenjdk,
   SiReact,
   SiNextdotjs,
   SiTailwindcss,
@@ -35,7 +35,7 @@ const skillCategories = [
     skills: [
       { name: "C", icon: <SiC />, level: 90 },
       { name: "C++", icon: <SiCplusplus />, level: 85 },
-      { name: "Java", icon: <SiJouav />, level: 88 },
+      { name: "Java", icon: <SiOpenjdk />, level: 88 },
       { name: "JavaScript", icon: <SiJavascript />, level: 70 },
       { name: "TypeScript", icon: <SiTypescript />, level: 65 },
       { name: "Python", icon: <SiPython />, level: 75 },
@@ -91,6 +91,11 @@ const projects = [
     name: "Ecommerce Website",
     link: "https://ecommercewebsite-orcin-pi.vercel.app/",
     desc: "Modern ecommerce web app with cart and responsive UI.",
+  },
+  {
+    name: "Nexora AI",
+    link: "https://nexora-ai-kappa-topaz.vercel.app/",
+    desc: "Intelligent AI chat companion with secure Google authentication.",
   },
 ];
 
@@ -198,7 +203,7 @@ export default function Page() {
 
         {/* ================= TYPING EFFECT ================= */}
 
-        <div className="mt-4 text-xl text-white-400 font-semibold z-10">
+        <div className="mt-4 text-xl text-gray-300 font-semibold z-10">
           <TypeAnimation
             sequence={[
               "Full Stack Developer",
@@ -234,20 +239,20 @@ export default function Page() {
             href="https://github.com/ayushkumar0808"
 
             className="mt-6 inline-block px-8 py-3 rounded-full font-semibold
-  bg-gradient-to-r from-pink-500 via-purple-500 to-purpule-500
+  bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500
   shadow-xl"
           >
-            My GitHub Overviwe😁
+            My GitHub Overview😁
 
           </motion.a>
 
             <motion.a
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            href="https://codolio.com/profile/confused.ayush "
+            href="https://codolio.com/profile/confused.ayush"
 
             className="mt-6 inline-block text-black px-8 py-3 rounded-full font-semibold
-  bg-gradient-to-r from-purple-500 via-white to-purpule-500
+  bg-gradient-to-r from-purple-500 via-white to-purple-500
   shadow-xl"
           >
            My Coding Profile😑
@@ -260,7 +265,7 @@ export default function Page() {
             href="https://github.com/ayushkumar0808?tab=repositories"
 
             className="mt-6 inline-block px-8 py-3 rounded-full font-semibold
-  bg-gradient-to-r from-purpule-500 via-purple-500 to-pink-500
+  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
   shadow-xl"
           >
             Watch My repo👀
@@ -272,7 +277,8 @@ export default function Page() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             href="/resume.pdf"
-            target="resume"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 inline-block px-8 py-3 rounded-full font-semibold
   bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500
   shadow-xl"
@@ -399,6 +405,7 @@ export default function Page() {
               <a
                 href={project.link}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-purple-400 underline"
               >
                 Visit My artwork →
@@ -443,7 +450,7 @@ export default function Page() {
 
       {/* FOOTER */}
       <footer className="text-center pb-10 text-gray-500 text-sm">
-        © {new Date().getFullYear()} Ayush Kumar. Commit Today Build Tommorow
+        © {new Date().getFullYear()} Ayush Kumar. Commit Today Build Tomorrow
       </footer>
     </main>
   );
