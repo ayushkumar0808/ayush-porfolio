@@ -84,18 +84,23 @@ const skillCategories = [
 const projects = [
   {
     name: "Real Time Chat App",
-    link: "https://real-time-chat-app-rq6r.onrender.com/login",
+    link: "https://real-time-chat-app-chi-five.vercel.app/",
     desc: "Real-time messaging platform with authentication and live communication.",
-  },
-  {
-    name: "Ecommerce Website",
-    link: "https://ecommercewebsite-orcin-pi.vercel.app/",
-    desc: "Modern ecommerce web app with cart and responsive UI.",
   },
   {
     name: "Nexora AI",
     link: "https://nexora-ai-kappa-topaz.vercel.app/",
     desc: "Intelligent AI chat companion with secure Google authentication.",
+  },
+  {
+    name: "College Event Management Portal",
+    link: "https://college-event-management-portal-gules.vercel.app/",
+    desc: "Portal to create, manage, and track college events with role-based access.",
+  },
+   {
+    name: "Ecommerce Website",
+    link: "https://ecommercewebsite-orcin-pi.vercel.app/",
+    desc: "Modern ecommerce web app with cart and responsive UI.",
   },
 ];
 
