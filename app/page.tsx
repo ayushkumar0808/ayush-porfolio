@@ -192,7 +192,7 @@ const techPulse = [
 /* ================= PAGE ================= */
 
 // Replace with your own Formspree form endpoint (see setup note below the component).
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/myegvvak";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 export default function Page() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -220,26 +220,34 @@ export default function Page() {
   return (
     <main className="relative bg-[#fafafa] text-[#1a1a1a] overflow-hidden">
       {/* Geometric background */}
-      <div className="fixed inset-0 -z-10 opacity-[0.4]">
+      <div className="fixed inset-0 -z-10">
         <svg
           className="w-full h-full"
           viewBox="0 0 1900 1200"
           preserveAspectRatio="xMidYMid slice"
         >
-          <polygon points="0,0 400,0 200,300 0,250" fill="#eceded" />
-          <polygon points="400,0 800,0 600,350 200,300" fill="#e2e3e4" />
-          <polygon points="800,0 1200,0 1000,300 600,350" fill="#eceded" />
-          <polygon points="1200,0 1900,0 1900,400 1000,300" fill="#e6e7e8" />
-          <polygon points="0,250 200,300 300,700 0,650" fill="#f2f2f2" />
-          <polygon points="200,300 600,350 500,750 300,700" fill="#e9eaea" />
-          <polygon points="600,350 1000,300 900,700 500,750" fill="#dfe0e1" />
-          <polygon points="1000,300 1900,400 1900,800 900,700" fill="#eaebeb" />
-          <polygon points="0,650 300,700 200,1200 0,1200" fill="#e4e5e6" />
-          <polygon points="300,700 500,750 400,1200 200,1200" fill="#efefef" />
-          <polygon points="500,750 900,700 800,1200 400,1200" fill="#e0e1e2" />
-          <polygon points="900,700 1900,800 1900,1200 800,1200" fill="#e8e9ea" />
+          <polygon points="0,0 400,0 200,300 0,250" fill="#e4e5e7" stroke="#d5d6d9" strokeWidth="1" />
+          <polygon points="400,0 800,0 600,350 200,300" fill="#d7d9dc" stroke="#c8cacd" strokeWidth="1" />
+          <polygon points="800,0 1200,0 1000,300 600,350" fill="#e9eaec" stroke="#d5d6d9" strokeWidth="1" />
+          <polygon points="1200,0 1900,0 1900,400 1000,300" fill="#dcdee0" stroke="#cdcfd2" strokeWidth="1" />
+          <polygon points="0,250 200,300 300,700 0,650" fill="#eef0f1" stroke="#dcdedf" strokeWidth="1" />
+          <polygon points="200,300 600,350 500,750 300,700" fill="#d2d4d7" stroke="#c3c5c8" strokeWidth="1" />
+          <polygon points="600,350 1000,300 900,700 500,750" fill="#e6e7e9" stroke="#d7d8db" strokeWidth="1" />
+          <polygon points="1000,300 1900,400 1900,800 900,700" fill="#d9dadd" stroke="#cacbce" strokeWidth="1" />
+          <polygon points="0,650 300,700 200,1200 0,1200" fill="#e2e4e6" stroke="#d3d5d7" strokeWidth="1" />
+          <polygon points="300,700 500,750 400,1200 200,1200" fill="#ecedef" stroke="#dddfe1" strokeWidth="1" />
+          <polygon points="500,750 900,700 800,1200 400,1200" fill="#d5d7d9" stroke="#c6c8ca" strokeWidth="1" />
+          <polygon points="900,700 1900,800 1900,1200 800,1200" fill="#e0e1e4" stroke="#d1d3d5" strokeWidth="1" />
         </svg>
       </div>
+
+      {/* Animated glow orbs (signature from the original portfolio) */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute w-[600px] h-[600px] bg-purple-500/10 blur-3xl rounded-full top-[-200px] left-[-200px] animate-pulse" />
+        <div className="absolute w-[600px] h-[600px] bg-orange-400/10 blur-3xl rounded-full bottom-[-200px] right-[-200px] animate-pulse" />
+        <div className="absolute w-96 h-96 bg-pink-400/10 blur-3xl rounded-full top-1/3 left-1/3" />
+      </div>
+
       <div className="fixed top-6 left-6 -z-10 w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_20px_6px_rgba(249,115,22,0.5)]" />
 
       {/* Navbar */}
@@ -310,16 +318,36 @@ export default function Page() {
 
             <div className="flex flex-wrap gap-3 mt-8">
               <a
-                href="#projects"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 transition text-white font-semibold px-6 py-3 rounded-full"
+                href="https://github.com/ayushkumar0808"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
               >
-                View Work →
+                My GitHub Overview 😁
               </a>
               <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-white border border-black/10 hover:border-orange-400 transition font-semibold px-6 py-3 rounded-full"
+                href="https://codolio.com/profile/confused.ayush"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-black font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-purple-500 via-white to-purple-500"
               >
-                Contact Me
+                My Coding Profile 😑
+              </a>
+              <a
+                href="https://github.com/ayushkumar0808?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+              >
+                Watch My Repo 👀
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
+              >
+                My Resume 📄
               </a>
             </div>
 
@@ -418,12 +446,15 @@ export default function Page() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.4 }}
-                    className="p-6 rounded-2xl bg-white border border-black/5 shadow-sm"
+                    className="group relative p-6 rounded-2xl bg-white/60 border border-black/5 backdrop-blur-xl shadow-sm overflow-hidden"
                   >
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-orange-400/25 via-pink-400/20 to-purple-500/25 blur-xl" />
+
+                    <div className="relative flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3 text-lg font-semibold">
-                        <span className="text-2xl text-orange-500">
+                        <span className="text-2xl text-orange-500 group-hover:scale-125 transition">
                           {skill.icon}
                         </span>
                         {skill.name}
@@ -433,13 +464,13 @@ export default function Page() {
                       </span>
                     </div>
 
-                    <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="relative w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2 }}
-                        className="h-2.5 rounded-full bg-orange-500"
+                        className="h-2.5 rounded-full bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500"
                       />
                     </div>
                   </motion.div>
@@ -613,7 +644,7 @@ export default function Page() {
                 </span>
                 <div>
                   <p className="text-xs text-gray-500">Location</p>
-                  <p className="font-semibold">Bangalore, Karnataka, India</p>
+                  <p className="font-semibold">India</p>
                 </div>
               </div>
             </div>
@@ -726,7 +757,7 @@ export default function Page() {
     </main>
   );
 }
-
+ 
 
 // "use client";
 
