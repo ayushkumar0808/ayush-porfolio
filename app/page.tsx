@@ -10,7 +10,6 @@ import {
   Linkedin,
   Mail,
   Instagram,
-  Download,
   ExternalLink,
   GraduationCap,
   Send,
@@ -220,7 +219,7 @@ export default function Page() {
   return (
     <main className="relative bg-[#fafafa] text-[#1a1a1a] overflow-hidden">
       {/* Geometric background */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 z-0">
         <svg
           className="w-full h-full"
           viewBox="0 0 1900 1200"
@@ -241,14 +240,10 @@ export default function Page() {
         </svg>
       </div>
 
-      {/* Animated glow orbs (signature from the original portfolio) */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute w-[600px] h-[600px] bg-purple-500/10 blur-3xl rounded-full top-[-200px] left-[-200px] animate-pulse" />
-        <div className="absolute w-[600px] h-[600px] bg-orange-400/10 blur-3xl rounded-full bottom-[-200px] right-[-200px] animate-pulse" />
-        <div className="absolute w-96 h-96 bg-pink-400/10 blur-3xl rounded-full top-1/3 left-1/3" />
-      </div>
+      <div className="fixed top-6 left-6 z-0 w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_20px_6px_rgba(249,115,22,0.5)]" />
 
-      <div className="fixed top-6 left-6 -z-10 w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_20px_6px_rgba(249,115,22,0.5)]" />
+      {/* Everything below sits above the background */}
+      <div className="relative z-10">
 
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-40 backdrop-blur bg-white/70 border-b border-black/5">
@@ -264,14 +259,6 @@ export default function Page() {
             <a href="#contact" className="hover:text-orange-500 transition">Contact</a>
           </div>
           <div className="flex items-center gap-3">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 transition text-white text-sm font-semibold px-4 py-2 rounded-full"
-            >
-              <Download size={16} /> Get Resume
-            </a>
             <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
@@ -321,7 +308,7 @@ export default function Page() {
                 href="https://github.com/ayushkumar0808"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-lg bg-orange-500 hover:bg-orange-600 transition"
               >
                 My GitHub Overview 😁
               </a>
@@ -329,7 +316,7 @@ export default function Page() {
                 href="https://codolio.com/profile/confused.ayush"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-black font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-purple-500 via-white to-purple-500"
+                className="inline-flex items-center gap-2 text-orange-600 font-semibold px-6 py-3 rounded-full shadow-lg bg-white border border-orange-200 hover:border-orange-400 transition"
               >
                 My Coding Profile 😑
               </a>
@@ -337,17 +324,9 @@ export default function Page() {
                 href="https://github.com/ayushkumar0808?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-lg bg-[#1a1a1a] hover:bg-black transition"
               >
                 Watch My Repo 👀
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
-              >
-                My Resume 📄
               </a>
             </div>
 
@@ -427,52 +406,35 @@ export default function Page() {
           I'm Good at <span className="text-orange-500">This</span>
         </motion.h2>
 
-        <div className="space-y-16">
+        <div className="space-y-14">
           {skillCategories.map((category, index) => (
             <div key={index}>
               <motion.h3
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl font-semibold mb-8 text-orange-500"
+                className="text-2xl font-semibold mb-6 text-orange-500"
               >
                 {category.title}
               </motion.h3>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.4 }}
-                    className="group relative p-6 rounded-2xl bg-white/60 border border-black/5 backdrop-blur-xl shadow-sm overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center gap-2 bg-white border border-black/10 px-5 py-2.5 rounded-full shadow-sm"
                   >
-                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-orange-400/25 via-pink-400/20 to-purple-500/25 blur-xl" />
-
-                    <div className="relative flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3 text-lg font-semibold">
-                        <span className="text-2xl text-orange-500 group-hover:scale-125 transition">
-                          {skill.icon}
-                        </span>
-                        {skill.name}
-                      </div>
-                      <span className="text-sm text-gray-400 font-medium">
-                        <CountUp end={skill.level} duration={2} />%
-                      </span>
-                    </div>
-
-                    <div className="relative w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2 }}
-                        className="h-2.5 rounded-full bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500"
-                      />
-                    </div>
+                    <span className="text-lg text-orange-500">
+                      {skill.icon}
+                    </span>
+                    <span className="text-sm font-medium text-gray-700">
+                      {skill.name}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -754,9 +716,12 @@ export default function Page() {
       <footer className="text-center py-8 text-gray-500 text-sm bg-[#0b1120] border-t border-white/5">
         © {new Date().getFullYear()} Ayush Kumar. Commit Today Build Tomorrow
       </footer>
+
+      </div>
     </main>
   );
 }
+
  
 
 // "use client";
