@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     images: ["/profile.jpg"],
   },
   verification: {
-    // Google Search Console se milne wala code yahan paste karo
-    // google: "YOUR_VERIFICATION_CODE",
+    // Google Search Console code
+    google: "DyTp4xolklreoYTv4HAaKDsHrVlhLOrjgSd0HpzwDdw",
   },
 };
 
