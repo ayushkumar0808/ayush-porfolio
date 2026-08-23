@@ -7,7 +7,10 @@ import { heroPills, totalSkillCount, projects } from "../data/portfolio-data";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-28 pb-16">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center pt-28 pb-16"
+    >
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
         <div>
           <h1 className="text-5xl md:text-6xl font-black leading-tight">
@@ -34,8 +37,8 @@ export default function Hero() {
 
           <p className="text-gray-600 mt-6 max-w-lg leading-relaxed">
             Aspiring Software Developer | Problem Solver | Passionate about
-            building scalable systems, real-time applications, and
-            beautiful user experiences.
+            building scalable systems, real-time applications, and beautiful
+            user experiences.
           </p>
 
           <div className="flex flex-wrap gap-3 mt-8">
@@ -45,7 +48,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-lg bg-orange-500 hover:bg-orange-600 hover:-translate-y-0.5 transition-all"
             >
-              My GitHub Overview 😁
+              GitHub Overview 😎
             </a>
             {/* Glass-style secondary button */}
             <a
@@ -97,7 +100,12 @@ export default function Hero() {
 
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
             className="hover-wiggle absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
           >
             <p className="text-xl font-bold">
