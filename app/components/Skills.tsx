@@ -29,7 +29,7 @@ export default function Skills() {
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <span className="text-orange-500">{"</>"}</span> Technical Skills
           </h3>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             {technicalSkills.map((skill, i) => (
               <motion.div
                 key={i}
