@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MessageCircle, Menu, X, Download } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "#about", label: "About" },
@@ -52,13 +53,14 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="hover-wiggle px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block"
+                className="hover-zoom px-4 py-2 rounded-full hover:text-orange-600 hover:bg-white/90 transition-all inline-block"
               >
                 {link.label}
               </a>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <a
               href="/resume.pdf"
               download
@@ -76,13 +78,16 @@ export default function Navbar() {
               <Mail size={18} />
             </a>
           </div>
-          <button
-            className="md:hidden"
-            aria-label="Open menu"
-            onClick={() => setMenuOpen(true)}
-          >
-            <Menu size={24} />
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeToggle />
+            <button
+              className=""
+              aria-label="Open menu"
+              onClick={() => setMenuOpen(true)}
+            >
+              <Menu size={24} />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -98,9 +103,12 @@ export default function Navbar() {
             <span className="font-bold text-lg tracking-tight">
               {"<"}Ayush{"/>"}
             </span>
-            <button aria-label="Close menu" onClick={() => setMenuOpen(false)}>
-              <X size={24} />
-            </button>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <button aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+                <X size={24} />
+              </button>
+            </div>
           </div>
 
           <div className="flex flex-col gap-7 p-6 text-xl font-medium text-gray-700">

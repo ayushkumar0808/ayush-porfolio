@@ -65,6 +65,15 @@ html {
   transform: scale(1.03);
 }
 
+/* Zoom only, no background tint — used where the hover background is set separately */
+.hover-zoom {
+  transition: transform 0.35s ease, background-color 0.25s ease;
+  transform: scale(1);
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
 
 /* Kiro avatar heartbeat */
 @keyframes heartbeat {
@@ -87,4 +96,55 @@ html {
 }
 .heartbeat {
   animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+/* ================= DARK MODE (toggled via .dark class on <html>) ================= */
+.dark {
+  color-scheme: dark;
+}
+.dark body,
+.dark main {
+  background-color: #0b0b0f;
+  color: #e5e5e5;
+}
+.dark .bg-white,
+.dark .bg-white\/70,
+.dark .bg-white\/80,
+.dark .bg-white\/90 {
+  background-color: rgba(28, 28, 32, 0.9) !important;
+}
+.dark .bg-gray-50,
+.dark .bg-gray-50\/70,
+.dark .bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+.dark .bg-gray-900 {
+  background-color: #0f0f10 !important;
+}
+.dark .border-black\/5,
+.dark .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark .text-\[\#1a1a1a\] {
+  color: #f0f0f0 !important;
+}
+.dark .text-gray-800,
+.dark .text-gray-700 {
+  color: #e2e2e5 !important;
+}
+.dark .text-gray-600 {
+  color: #b8b8bd !important;
+}
+.dark .text-gray-400 {
+  color: #9a9aa0 !important;
+}
+.dark .shadow-sm,
+.dark .shadow-xl,
+.dark .shadow-lg,
+.dark .shadow-2xl {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+/* Dim the fixed background photos a touch so text stays readable */
+.dark .fixed.inset-0.w-full.h-full.z-0 img {
+  filter: brightness(0.5);
 }
