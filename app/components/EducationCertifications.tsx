@@ -52,21 +52,11 @@ export default function EducationCertifications() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center justify-between gap-3 mb-10"
+            className="mb-10"
           >
             <h2 className="flex items-center gap-3 text-3xl md:text-4xl font-bold">
               <Award className="text-orange-500" size={32} /> Certifications
             </h2>
-            {certifications.length > 0 && certifications[0].link && (
-              <a
-                href={certifications[0].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full border border-black/10 bg-white/80 shadow-sm hover:bg-orange-50 hover:border-orange-200 transition"
-              >
-                <ExternalLink size={14} /> View Certificate
-              </a>
-            )}
           </motion.div>
 
           <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-4 md:p-6">
@@ -77,12 +67,17 @@ export default function EducationCertifications() {
                     <span className="shrink-0 w-11 h-11 rounded-xl bg-orange-100 text-orange-500 flex items-center justify-center">
                       <Award size={20} />
                     </span>
-                    <div>
+                    <div className="flex-1">
                       <p className="font-semibold text-gray-900">{cert.title}</p>
                       <p className="text-sm text-gray-400 mt-1">
                         {cert.issuer} • {cert.date}
                       </p>
                     </div>
+                    {cert.link && (
+                      <span className="shrink-0 flex items-center gap-1 text-xs font-semibold text-orange-600">
+                        <ExternalLink size={14} /> View
+                      </span>
+                    )}
                   </div>
                 );
                 return cert.link ? (
