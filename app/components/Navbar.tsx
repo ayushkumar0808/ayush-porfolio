@@ -52,7 +52,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block hover:animate-[wiggle_0.4s_ease-in-out]"
+                className="hover-wiggle px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block"
               >
                 {link.label}
               </a>

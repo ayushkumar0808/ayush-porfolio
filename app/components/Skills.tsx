@@ -38,13 +38,13 @@ export default function Skills() {
                 viewport={{ once: true }}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.3 }}
-                className="hover-wiggle p-5 rounded-2xl bg-gray-50/70 border border-black/5"
+                className="hover-wiggle p-4 rounded-2xl bg-gray-50/70 border border-black/5"
               >
-                <span className="text-2xl text-orange-500 mb-3 block">
+                <span className="text-2xl text-orange-500 mb-1.5 block">
                   {skill.icon}
                 </span>
-                <p className="font-semibold">{skill.name}</p>
-                <p className="text-sm text-gray-400">
+                <p className="font-semibold leading-tight">{skill.name}</p>
+                <p className="text-sm text-gray-400 leading-tight">
                   {getLevelLabel(skill.level)}
                 </p>
               </motion.div>

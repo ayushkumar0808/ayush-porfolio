@@ -172,6 +172,8 @@ export const BOT_NAME = "Kiro";
 export const BOT_AVATAR = "/kiro-avatar.jpg";
 
 export const QUICK_PROMPTS = [
+  "Who is Ayush?",
+  "Who are you?",
   "What projects has Ayush built?",
   "What are his skills?",
   "How can I contact him?",
@@ -181,6 +183,12 @@ export const QUICK_PROMPTS = [
 export function getBotReply(question: string): string {
   const q = question.toLowerCase();
 
+  if (/(who is ayush|about ayush|tell me about ayush)/.test(q)) {
+    return "Ayush Kumar is a passionate developer who loves building things with code and solving challenging problems. He's currently pursuing his MCA at M.S. Ramaiah University of Applied Sciences and sharpening his skills in DSA and modern web development, working toward becoming a top-tier developer.";
+  }
+  if (/(who are you|what are you|your name)/.test(q)) {
+    return `I'm ${BOT_NAME}, Ayush's virtual assistant! I'm here to answer questions about his projects, skills, education, and how to get in touch with him.`;
+  }
   if (/(project|built|made|work)/.test(q)) {
     const names = projects.map((p) => p.name).join(", ");
     return `Ayush has built ${projects.length} projects including ${names}. Check the Projects section above for live links!`;
