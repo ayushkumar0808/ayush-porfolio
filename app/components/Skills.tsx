@@ -57,15 +57,12 @@ export default function Skills() {
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <Users className="text-orange-500" size={22} /> Soft Skills
           </h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="space-y-5">
             {softSkills.map((skill) => (
-              <span
-                key={skill}
-                className="hover-wiggle flex items-center gap-2 rounded-full bg-gray-50/70 border border-black/5 px-4 py-2 text-sm text-gray-700"
-              >
+              <div key={skill} className="hover-wiggle flex items-center gap-3 rounded-xl px-2 py-1 -mx-2">
                 <span className="w-2 h-2 rounded-full bg-orange-500" />
-                {skill}
-              </span>
+                <span className="text-gray-700">{skill}</span>
+              </div>
             ))}
           </div>
         </div>
