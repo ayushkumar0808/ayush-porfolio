@@ -244,29 +244,23 @@ export default function Page() {
 
   return (
     <main className="relative bg-[#fafafa] text-[#1a1a1a] overflow-hidden">
-      {/* Geometric background */}
-      <div className="fixed inset-0 z-0">
-        <svg
-          className="w-full h-full"
-          viewBox="0 0 1900 1200"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <polygon points="0,0 400,0 200,300 0,250" fill="#e4e5e7" stroke="#d5d6d9" strokeWidth="1" />
-          <polygon points="400,0 800,0 600,350 200,300" fill="#d7d9dc" stroke="#c8cacd" strokeWidth="1" />
-          <polygon points="800,0 1200,0 1000,300 600,350" fill="#e9eaec" stroke="#d5d6d9" strokeWidth="1" />
-          <polygon points="1200,0 1900,0 1900,400 1000,300" fill="#dcdee0" stroke="#cdcfd2" strokeWidth="1" />
-          <polygon points="0,250 200,300 300,700 0,650" fill="#eef0f1" stroke="#dcdedf" strokeWidth="1" />
-          <polygon points="200,300 600,350 500,750 300,700" fill="#d2d4d7" stroke="#c3c5c8" strokeWidth="1" />
-          <polygon points="600,350 1000,300 900,700 500,750" fill="#e6e7e9" stroke="#d7d8db" strokeWidth="1" />
-          <polygon points="1000,300 1900,400 1900,800 900,700" fill="#d9dadd" stroke="#cacbce" strokeWidth="1" />
-          <polygon points="0,650 300,700 200,1200 0,1200" fill="#e2e4e6" stroke="#d3d5d7" strokeWidth="1" />
-          <polygon points="300,700 500,750 400,1200 200,1200" fill="#ecedef" stroke="#dddfe1" strokeWidth="1" />
-          <polygon points="500,750 900,700 800,1200 400,1200" fill="#d5d7d9" stroke="#c6c8ca" strokeWidth="1" />
-          <polygon points="900,700 1900,800 1900,1200 800,1200" fill="#e0e1e4" stroke="#d1d3d5" strokeWidth="1" />
-        </svg>
-      </div>
-
-      <div className="fixed top-6 left-6 z-0 w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_20px_6px_rgba(249,115,22,0.5)]" />
+      {/* Background images: portrait crop for mobile, landscape crop for desktop */}
+      <img
+        src="/bg-mobile.jpg"
+        alt=""
+        aria-hidden="true"
+        className="fixed inset-0 w-full h-full object-cover object-top md:hidden -z-10"
+        loading="eager"
+        decoding="sync"
+      />
+      <img
+        src="/bg-desktop.jpg"
+        alt=""
+        aria-hidden="true"
+        className="hidden md:block fixed inset-0 w-full h-full object-cover object-center -z-10"
+        loading="eager"
+        decoding="sync"
+      />
 
       {/* Everything below sits above the background */}
       <div className="relative z-10">
@@ -836,8 +830,6 @@ export default function Page() {
     </main>
   );
 }
-
-
  
 
 // "use client";
