@@ -450,12 +450,12 @@ export default function Page() {
           <a href="#hero" className="font-bold text-lg tracking-tight">
             {"<"}Ayush{"/>"}
           </a>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-gray-700">
-            <a href="#about" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">About</a>
-            <a href="#skills" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Skills</a>
-            <a href="#projects" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Projects</a>
-            <a href="#education" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Education</a>
-            <a href="#contact" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Contact</a>
+          <div className="hidden md:flex gap-2 text-sm font-medium text-gray-700">
+            <a href="#about" className="px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block hover:animate-[wiggle_0.4s_ease-in-out]">About</a>
+            <a href="#skills" className="px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Skills</a>
+            <a href="#projects" className="px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Projects</a>
+            <a href="#education" className="px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Education</a>
+            <a href="#contact" className="px-4 py-2 rounded-full hover:text-orange-600 hover:bg-orange-50/80 transition-all inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Contact</a>
           </div>
           <div className="hidden md:flex items-center gap-4">
             <a
@@ -1228,6 +1228,7 @@ export default function Page() {
     </main>
   );
 }
+
 
 
 // "use client";
