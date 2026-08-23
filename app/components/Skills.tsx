@@ -23,9 +23,9 @@ export default function Skills() {
         <span className="h-px w-16 bg-orange-200" />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Technical Skills */}
-        <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+        <div className="hover-wiggle self-start rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <span className="text-orange-500">{"</>"}</span> Technical Skills
           </h3>
@@ -53,16 +53,19 @@ export default function Skills() {
         </div>
 
         {/* Soft Skills */}
-        <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+        <div className="hover-wiggle self-start rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <Users className="text-orange-500" size={22} /> Soft Skills
           </h3>
-          <div className="space-y-5">
+          <div className="flex flex-wrap gap-3">
             {softSkills.map((skill) => (
-              <div key={skill} className="hover-wiggle flex items-center gap-3 rounded-xl px-2 py-1 -mx-2">
+              <span
+                key={skill}
+                className="hover-wiggle flex items-center gap-2 rounded-full bg-gray-50/70 border border-black/5 px-4 py-2 text-sm text-gray-700"
+              >
                 <span className="w-2 h-2 rounded-full bg-orange-500" />
-                <span className="text-gray-700">{skill}</span>
-              </div>
+                {skill}
+              </span>
             ))}
           </div>
         </div>
