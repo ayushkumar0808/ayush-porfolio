@@ -1,8 +1,8 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import CountUp from "react-countup";
 import {
@@ -22,6 +22,8 @@ import {
   Sparkles,
   CalendarDays,
   Users,
+  Bot,
+  Loader2,
 } from "lucide-react";
 import {
   SiC,
@@ -213,6 +215,40 @@ const techPulse = [
   },
 ];
 
+/* ================= CHATBOT (canned Q&A, no backend needed) ================= */
+
+const BOT_NAME = "Kiro";
+
+const QUICK_PROMPTS = [
+  "What projects has Ayush built?",
+  "What are his skills?",
+  "How can I contact him?",
+  "What's his education?",
+];
+
+function getBotReply(question: string): string {
+  const q = question.toLowerCase();
+
+  if (/(project|built|made|work)/.test(q)) {
+    const names = projects.map((p) => p.name).join(", ");
+    return `Ayush has built ${projects.length} projects including ${names}. Check the Projects section above for live links!`;
+  }
+  if (/(skill|tech|stack|language|know)/.test(q)) {
+    const cats = skillCategories.map((c) => c.title).join(", ");
+    return `Ayush works across ${cats}. His strongest areas are React, Next.js, and Node.js — scroll to the Skills section for the full breakdown.`;
+  }
+  if (/(contact|reach|email|phone|hire|whatsapp)/.test(q)) {
+    return "You can reach Ayush at kayush3647@gmail.com or +91 6207279496, or just use the contact form below!";
+  }
+  if (/(education|degree|college|university|study)/.test(q)) {
+    return "Ayush is pursuing his MCA at M.S. Ramaiah University of Applied Sciences, after a BCA from Ranchi University.";
+  }
+  if (/(hi|hello|hey|namaste)/.test(q)) {
+    return "Hey! I'm here to help you learn more about Ayush. Ask me about his projects, skills, or how to get in touch.";
+  }
+  return "I'm a simple assistant so I might not catch everything — try asking about Ayush's projects, skills, education, or contact info!";
+}
+
 /* ================= PAGE ================= */
 
 // Replace with your own Formspree form endpoint (see setup note below the component).
@@ -222,6 +258,81 @@ export default function Page() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // ---- chatbot state ----
+  const [chatOpen, setChatOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
+  const [showBadge, setShowBadge] = useState(true);
+  const [messages, setMessages] = useState([
+    {
+      role: "bot",
+      text: "Hi, I'm Kiro — Ayush's assistant. Ask me about his projects, skills, or how to reach him!",
+    },
+  ]);
+  const [chatInput, setChatInput] = useState("");
+  const [botTyping, setBotTyping] = useState(false);
+  const chatBodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowGreeting(true), 4000);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [messages, botTyping]);
+
+  const sendChat = (raw: string) => {
+    const text = raw.trim();
+    if (!text || botTyping) return;
+    setMessages((m) => [...m, { role: "user", text }]);
+    setChatInput("");
+    setBotTyping(true);
+    setTimeout(() => {
+      setMessages((m) => [...m, { role: "bot", text: getBotReply(text) }]);
+      setBotTyping(false);
+    }, 650);
+  };
+
+  const toggleChat = () => {
+    setChatOpen((v) => !v);
+    setShowGreeting(false);
+    setShowBadge(false);
+  };
+
+  // ---- cursor trail (desktop only) ----
+  const trailRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const mouse = useRef({ x: -100, y: -100 });
+  const trail = useRef(
+    Array.from({ length: 8 }, () => ({ x: -100, y: -100 }))
+  );
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
+    };
+    const loop = () => {
+      trail.current.unshift({ ...mouse.current });
+      if (trail.current.length > 8) trail.current.length = 8;
+      trail.current.forEach((pos, i) => {
+        const el = trailRefs.current[i];
+        if (el) {
+          el.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+          el.style.opacity = `${1 - i * 0.12}`;
+        }
+      });
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    window.addEventListener("mousemove", onMove);
+    rafRef.current = requestAnimationFrame(loop);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -244,6 +355,45 @@ export default function Page() {
 
   return (
     <main className="relative text-[#1a1a1a] overflow-x-hidden">
+      {/* Global styles for cursor trail + fade-in animation */}
+      <style>{`
+        @media (max-width: 767px) {
+          .cursor-trail { display: none; }
+        }
+        .trail-dot {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 16px;
+          height: 16px;
+          border-radius: 9999px;
+          background: radial-gradient(circle, #ffffffdd, #f97316cc 30%, #f9731666 60%, transparent);
+          box-shadow: 0 0 20px #f9731699, 0 0 34px #f9731644;
+          transform: translate3d(-100px, -100px, 0);
+          pointer-events: none;
+          will-change: transform, opacity;
+          mix-blend-mode: screen;
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up { animation: fadeInUp 0.35s ease-out; }
+      `}</style>
+
+      {/* Cursor trail - desktop only */}
+      <div className="cursor-trail fixed inset-0 z-[60] pointer-events-none hidden md:block">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <span
+            key={i}
+            ref={(el) => {
+              trailRefs.current[i] = el;
+            }}
+            className="trail-dot"
+          />
+        ))}
+      </div>
+
       {/* Background images: portrait crop for mobile, landscape crop for desktop.
           Fixed + z-0 so it stays put behind everything while the page scrolls over it. */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
@@ -355,7 +505,7 @@ export default function Page() {
               Hi, I'm <span className="text-orange-500">Ayush</span>
             </h1>
 
-            <div className="mt-3 text-2xl md:text-3xl font-semibold text-gray-500 h-10">
+            <div className="mt-3 text-2xl md:text-3xl font-semibold text-gray-600 min-h-[1.5em] flex items-center">
               <TypeAnimation
                 sequence={[
                   "Full Stack Developer",
@@ -370,9 +520,10 @@ export default function Page() {
                 speed={50}
                 repeat={Infinity}
               />
+              <span className="inline-block w-[2px] h-[1em] bg-gray-600 ml-1 animate-pulse" />
             </div>
 
-            <p className="text-gray-500 mt-6 max-w-lg leading-relaxed">
+            <p className="text-gray-600 mt-6 max-w-lg leading-relaxed">
               Aspiring Software Developer | Problem Solver | Passionate about
               building scalable systems, real-time applications, and
               beautiful user experiences.
@@ -383,15 +534,16 @@ export default function Page() {
                 href="https://github.com/ayushkumar0808"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-lg bg-orange-500 hover:bg-orange-600 transition"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-lg bg-orange-500 hover:bg-orange-600 hover:-translate-y-0.5 transition-all"
               >
                 My GitHub Overview 😁
               </a>
+              {/* Glass-style secondary buttons */}
               <a
                 href="https://codolio.com/profile/confused.ayush"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-orange-600 font-semibold px-6 py-3 rounded-full shadow-lg bg-white border border-orange-200 hover:border-orange-400 transition"
+                className="inline-flex items-center gap-2 text-gray-900 font-semibold px-6 py-3 rounded-full border border-white/40 bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/60 hover:-translate-y-0.5 transition-all"
               >
                 My Coding Profile 😑
               </a>
@@ -399,7 +551,7 @@ export default function Page() {
                 href="https://github.com/ayushkumar0808?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full shadow-lg bg-[#1a1a1a] hover:bg-black transition"
+                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full border border-white/20 bg-[#1a1a1a]/80 backdrop-blur-md shadow-lg hover:bg-black hover:-translate-y-0.5 transition-all"
               >
                 Watch My Repo 👀
               </a>
@@ -409,7 +561,7 @@ export default function Page() {
               {heroPills.map((pill) => (
                 <span
                   key={pill}
-                  className="text-sm font-medium bg-white/80 backdrop-blur-sm border border-black/10 px-4 py-2 rounded-full text-gray-700"
+                  className="text-sm font-medium bg-white/40 backdrop-blur-md border border-white/40 px-4 py-2 rounded-full text-gray-800 shadow-sm hover:bg-orange-100/70 hover:border-orange-300 hover:-translate-y-0.5 hover:scale-105 transition-all cursor-default"
                 >
                   {pill}
                 </span>
@@ -431,18 +583,18 @@ export default function Page() {
               />
             </div>
 
-            <div className="absolute top-4 -left-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl px-5 py-3 text-center">
+            <div className="absolute top-4 -left-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center">
               <p className="text-xl font-bold">
                 <CountUp end={totalSkillCount} duration={2} />+
               </p>
-              <p className="text-xs text-gray-500">Skills</p>
+              <p className="text-xs text-gray-600">Skills</p>
             </div>
 
-            <div className="absolute bottom-6 -right-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl px-5 py-3 text-center">
+            <div className="absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center">
               <p className="text-xl font-bold">
                 <CountUp end={projects.length} duration={2} />+
               </p>
-              <p className="text-xs text-gray-500">Projects</p>
+              <p className="text-xs text-gray-600">Projects</p>
             </div>
           </motion.div>
         </div>
@@ -830,11 +982,148 @@ export default function Page() {
       </footer>
 
       </div>
+
+      {/* ===== FLOATING CHATBOT WIDGET ===== */}
+
+      {/* Greeting bubble */}
+      <AnimatePresence>
+        {showGreeting && !chatOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="fixed bottom-24 right-6 z-[70] max-w-[220px]"
+          >
+            <div className="relative bg-white rounded-2xl rounded-br-sm shadow-xl px-4 py-3 text-sm text-gray-800 border border-gray-200">
+              <button
+                onClick={() => setShowGreeting(false)}
+                aria-label="Dismiss greeting"
+                className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center bg-gray-300 hover:bg-gray-400 rounded-full text-white text-xs"
+              >
+                <X size={12} />
+              </button>
+              🖐️ Hey! Ask me about Ayush!
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Chat panel */}
+      <AnimatePresence>
+        {chatOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-24 right-6 z-[70] w-[90vw] max-w-sm h-[70vh] max-h-[560px] flex flex-col rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
+          >
+            <div className="flex items-center gap-3 px-4 py-3 bg-gray-900 text-white">
+              <span className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center">
+                <Bot size={20} />
+              </span>
+              <div>
+                <p className="font-semibold leading-tight">{BOT_NAME}</p>
+                <p className="text-xs text-gray-400 leading-tight">
+                  Ayush's Assistant
+                </p>
+              </div>
+            </div>
+
+            <div
+              ref={chatBodyRef}
+              className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-gray-50"
+            >
+              {messages.map((m, i) => (
+                <div
+                  key={i}
+                  className={`fade-in-up flex ${
+                    m.role === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  <div
+                    className={`max-w-[85%] rounded-2xl px-4 py-2 text-sm leading-relaxed ${
+                      m.role === "user"
+                        ? "bg-orange-500 text-white rounded-br-sm"
+                        : "bg-white text-gray-800 shadow-sm rounded-bl-sm"
+                    }`}
+                  >
+                    {m.text}
+                  </div>
+                </div>
+              ))}
+              {botTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-white rounded-2xl rounded-bl-sm px-4 py-2 shadow-sm">
+                    <Loader2 size={16} className="animate-spin text-orange-500" />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {messages.length === 1 && (
+              <div className="px-4 pb-2 flex flex-wrap gap-2">
+                {QUICK_PROMPTS.map((qp) => (
+                  <button
+                    key={qp}
+                    onClick={() => sendChat(qp)}
+                    className="text-xs px-3 py-1.5 rounded-full bg-gray-100 hover:bg-orange-100 text-gray-700 transition-colors"
+                  >
+                    {qp}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                sendChat(chatInput);
+              }}
+              className="flex items-center gap-2 p-3 border-t border-gray-200 bg-white"
+            >
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                placeholder={`Ask ${BOT_NAME} anything...`}
+                className="flex-1 px-3 py-2 rounded-full bg-gray-100 text-sm outline-none focus:ring-2 focus:ring-orange-400"
+              />
+              <button
+                type="submit"
+                disabled={botTyping || !chatInput.trim()}
+                className="p-2 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-full text-white transition-colors"
+              >
+                <Send size={18} />
+              </button>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Toggle button */}
+      <button
+        onClick={toggleChat}
+        aria-label="Open chat assistant"
+        className="fixed bottom-6 right-6 z-[70] w-14 h-14 rounded-full shadow-lg flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white transition-colors"
+      >
+        {chatOpen ? (
+          <X size={24} />
+        ) : (
+          <span className="relative">
+            <Bot size={26} />
+            {showBadge && (
+              <span className="absolute -top-2 -right-2 w-4 h-4 flex items-center justify-center bg-red-500 text-white text-[9px] font-bold rounded-full border-2 border-white">
+                1
+              </span>
+            )}
+          </span>
+        )}
+      </button>
     </main>
   );
 }
 
- 
 
 // "use client";
 
