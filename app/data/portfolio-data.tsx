@@ -131,8 +131,26 @@ export const certifications = [
   {
     title: "HTML Certification",
     issuer: "KnowledgeGate",
-    date: "2025",
+    date: "2026",
     link: "https://www.knowledgegate.ai/certificate/84A7CBC7",
+  },
+   {
+    title: "CSS Certification",
+    issuer: "KnowledgeGate",
+    date: "2026",
+    link: "https://www.knowledgegate.ai/certificate/B87BE3CB",
+  },
+  {
+    title: "JavaScript Certification",
+    issuer: "KnowledgeGate",
+    date: "2026",
+    link: "https://www.knowledgegate.ai/certificate/1DDDA2C6",
+  },
+    {
+    title: "Web Development Certification",
+    issuer: "Udemy",
+    date: "2026",
+    link: "",
   },
 ];
 
