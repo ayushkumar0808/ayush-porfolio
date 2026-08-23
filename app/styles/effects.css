@@ -52,28 +52,19 @@ html {
   animation: fadeInUp 0.35s ease-out;
 }
 
-/* Light orange hover tint + gentle wiggle used across cards, links, avatars */
-@keyframes wiggle {
-  0%,
-  100% {
-    transform: rotate(0deg) scale(1);
-  }
-  25% {
-    transform: rotate(-1.5deg) scale(1.02);
-  }
-  75% {
-    transform: rotate(1.5deg) scale(1.02);
-  }
-}
+/* Light orange hover tint + gentle zoom used across cards, links, avatars */
+/* No rotation/shake here on purpose — only a smooth scale so nothing jitters on hover */
 .hover-wiggle {
   transition: background-color 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease, transform 0.35s ease;
+  transform: scale(1);
 }
 .hover-wiggle:hover {
   background-color: rgba(249, 115, 22, 0.08);
   border-color: rgba(249, 115, 22, 0.35);
-  animation: wiggle 0.4s ease-in-out;
+  transform: scale(1.03);
 }
+
 
 /* Kiro avatar heartbeat */
 @keyframes heartbeat {

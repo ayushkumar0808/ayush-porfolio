@@ -25,7 +25,7 @@ export default function Skills() {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Technical Skills */}
-        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+        <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <span className="text-orange-500">{"</>"}</span> Technical Skills
           </h3>
@@ -53,7 +53,7 @@ export default function Skills() {
         </div>
 
         {/* Soft Skills */}
-        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+        <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <Users className="text-orange-500" size={22} /> Soft Skills
           </h3>

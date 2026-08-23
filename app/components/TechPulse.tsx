@@ -3,7 +3,7 @@ import { techPulse } from "../data/portfolio-data";
 export default function TechPulse() {
   return (
     <section className="max-w-4xl mx-auto px-6 py-24">
-      <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-8 md:p-12">
+      <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-8 md:p-12">
         <div className="flex items-center justify-center gap-3 mb-2">
           <h2 className="text-3xl font-bold">Tech Pulse</h2>
           <span className="text-xs font-semibold bg-gray-100 text-gray-500 px-3 py-1 rounded-full">

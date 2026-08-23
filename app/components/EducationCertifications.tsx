@@ -69,7 +69,7 @@ export default function EducationCertifications() {
             )}
           </motion.div>
 
-          <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-4 md:p-6">
+          <div className="hover-wiggle rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-4 md:p-6">
             <div className="space-y-3">
               {certifications.map((cert, i) => {
                 const cardInner = (
