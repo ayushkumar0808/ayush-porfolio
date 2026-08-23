@@ -16,6 +16,12 @@ import {
   MapPin,
   Phone,
   MessageCircle,
+  Menu,
+  X,
+  ShoppingCart,
+  Sparkles,
+  CalendarDays,
+  Users,
 } from "lucide-react";
 import {
   SiC,
@@ -110,6 +116,21 @@ const totalSkillCount = skillCategories.reduce(
   0
 );
 
+// Converts a numeric skill level into the text label the reference design uses
+function getLevelLabel(level) {
+  if (level >= 85) return "Advanced";
+  if (level >= 70) return "Intermediate";
+  return "Beginner";
+}
+
+const softSkills = [
+  "Communication",
+  "Problem Solving",
+  "Teamwork",
+  "Adaptability",
+  "Time Management",
+];
+
 /* ================= PROJECTS ================= */
 
 const projects = [
@@ -118,24 +139,28 @@ const projects = [
     link: "https://real-time-chat-app-chi-five.vercel.app/",
     desc: "Real-time messaging platform with authentication and live communication.",
     tags: ["React", "Node.js", "Socket.io", "MongoDB"],
+    icon: <MessageCircle size={48} />,
   },
   {
     name: "Ecommerce Website",
     link: "https://ecommercewebsite-orcin-pi.vercel.app/",
     desc: "Modern ecommerce web app with cart and responsive UI.",
     tags: ["React", "Tailwind", "E-commerce"],
+    icon: <ShoppingCart size={48} />,
   },
   {
     name: "Nexora AI",
     link: "https://nexora-ai-kappa-topaz.vercel.app/",
     desc: "Intelligent AI chat companion with secure Google authentication.",
     tags: ["Next.js", "AI", "Auth"],
+    icon: <Sparkles size={48} />,
   },
   {
     name: "College Event Management Portal",
     link: "https://college-event-management-portal-gules.vercel.app/",
     desc: "Portal to create, manage, and track college events with role-based access.",
     tags: ["React", "Node.js", "Express", "MongoDB"],
+    icon: <CalendarDays size={48} />,
   },
 ];
 
@@ -196,6 +221,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 export default function Page() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -258,7 +284,7 @@ export default function Page() {
             <a href="#education" className="hover:text-orange-500 transition">Education</a>
             <a href="#contact" className="hover:text-orange-500 transition">Contact</a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
@@ -269,8 +295,60 @@ export default function Page() {
               <Mail size={18} />
             </a>
           </div>
+          <button
+            className="md:hidden"
+            aria-label="Open menu"
+            onClick={() => setMenuOpen(true)}
+          >
+            <Menu size={24} />
+          </button>
         </div>
       </nav>
+
+      {/* Mobile menu drawer */}
+      {menuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-50 bg-white flex flex-col md:hidden"
+        >
+          <div className="flex justify-between items-center p-4 border-b border-black/5">
+            <span className="font-bold text-lg tracking-tight">
+              {"<"}Ayush{"/>"}
+            </span>
+            <button aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+              <X size={24} />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-7 p-6 text-xl font-medium text-gray-700">
+            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+            <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+            <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          </div>
+
+          <div className="mt-auto p-6 border-t border-black/5">
+            <p className="text-xs text-gray-400 mb-4">Connect</p>
+            <div className="flex gap-5">
+              <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
+                <Linkedin size={22} />
+              </a>
+              <a href="https://github.com/ayushkumar0808" aria-label="GitHub">
+                <Github size={22} />
+              </a>
+              <a href="mailto:kayush3647@gmail.com" aria-label="Email">
+                <Mail size={22} />
+              </a>
+              <a href="https://wa.me/916207279496" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <MessageCircle size={22} />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       {/* HERO */}
       <section id="hero" className="relative min-h-screen flex items-center pt-28 pb-16">
@@ -396,50 +474,75 @@ export default function Page() {
       </section>
 
       {/* SKILLS */}
-      <section id="skills" className="max-w-6xl mx-auto px-6 py-24">
+      <section id="skills" className="max-w-5xl mx-auto px-6 py-24">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16"
+          className="text-3xl md:text-4xl font-bold text-center mb-4"
         >
-          I'm Good at <span className="text-orange-500">This</span>
+          My technical toolkit and{" "}
+          <span className="text-orange-500">professional attributes</span>
         </motion.h2>
 
-        <div className="space-y-14">
-          {skillCategories.map((category, index) => (
-            <div key={index}>
-              <motion.h3
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="text-2xl font-semibold mb-6 text-orange-500"
-              >
-                {category.title}
-              </motion.h3>
+        <div className="flex items-center justify-center gap-4 my-10">
+          <span className="h-px w-16 bg-orange-500" />
+          <span className="text-orange-500">{"</>"}</span>
+          <span className="h-px w-16 bg-orange-200" />
+        </div>
 
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-center gap-2 bg-white border border-black/10 px-5 py-2.5 rounded-full shadow-sm"
-                  >
-                    <span className="text-lg text-orange-500">
-                      {skill.icon}
-                    </span>
-                    <span className="text-sm font-medium text-gray-700">
-                      {skill.name}
-                    </span>
-                  </motion.div>
-                ))}
+        <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-12">
+          <div className="space-y-12">
+            {skillCategories.map((category, index) => (
+              <div key={index}>
+                <motion.h3
+                  initial={{ opacity: 0, x: -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="text-xl font-semibold mb-6 text-gray-800"
+                >
+                  {category.title}
+                </motion.h3>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {category.skills.map((skill, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -3 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-5 rounded-2xl bg-gray-50 border border-black/5"
+                    >
+                      <span className="text-2xl text-orange-500 mb-3 block">
+                        {skill.icon}
+                      </span>
+                      <p className="font-semibold">{skill.name}</p>
+                      <p className="text-sm text-gray-400">
+                        {getLevelLabel(skill.level)}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* SOFT SKILLS */}
+        <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-12 mt-8">
+          <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
+            <Users className="text-orange-500" size={22} /> Soft Skills
+          </h3>
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            {softSkills.map((skill) => (
+              <div key={skill} className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-orange-500" />
+                <span className="text-gray-700">{skill}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -453,9 +556,15 @@ export default function Page() {
         >
           Featured <span className="text-orange-500">Projects</span>
         </motion.h2>
-        <p className="text-center text-gray-500 mt-3 mb-14">
+        <p className="text-center text-gray-500 mt-3">
           Some of my recent work
         </p>
+
+        <div className="flex items-center justify-center gap-4 my-10">
+          <span className="h-px w-16 bg-orange-500" />
+          <ExternalLink className="text-orange-500" size={20} />
+          <span className="h-px w-16 bg-orange-200" />
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
@@ -466,32 +575,38 @@ export default function Page() {
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="p-8 rounded-2xl bg-white border border-black/5 shadow-sm"
+              className="rounded-2xl bg-white border border-black/5 shadow-sm overflow-hidden"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-2xl font-semibold">{project.name}</h3>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${project.name}`}
-                  className="text-orange-500 shrink-0"
-                >
-                  <ExternalLink size={20} />
-                </a>
+              <div className="h-44 bg-gradient-to-br from-orange-50 to-gray-100 flex items-center justify-center text-orange-400">
+                {project.icon}
               </div>
 
-              <p className="text-gray-500 mb-5">{project.desc}</p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-medium bg-orange-50 text-orange-600 px-3 py-1 rounded-full"
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-2xl font-semibold">{project.name}</h3>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.name}`}
+                    className="text-orange-500 shrink-0"
                   >
-                    {tag}
-                  </span>
-                ))}
+                    <ExternalLink size={20} />
+                  </a>
+                </div>
+
+                <p className="text-gray-500 mb-5">{project.desc}</p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-medium bg-orange-50 text-orange-600 px-3 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
