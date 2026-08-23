@@ -117,7 +117,7 @@ const totalSkillCount = skillCategories.reduce(
 );
 
 // Converts a numeric skill level into the text label the reference design uses
-function getLevelLabel(level) {
+function getLevelLabel(level: number) {
   if (level >= 85) return "Advanced";
   if (level >= 70) return "Intermediate";
   return "Beginner";
@@ -836,6 +836,7 @@ export default function Page() {
     </main>
   );
 }
+
 
  
 
