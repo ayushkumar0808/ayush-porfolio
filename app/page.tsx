@@ -18,11 +18,11 @@ import {
   MessageCircle,
   Menu,
   X,
+  Download,
   ShoppingCart,
   Sparkles,
   CalendarDays,
   Users,
-  Bot,
   Loader2,
 } from "lucide-react";
 import {
@@ -32,71 +32,33 @@ import {
   SiTypescript,
   SiOpenjdk,
   SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
   SiHtml5,
   SiCss3,
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  SiSocketdotio,
   SiPython,
-  SiTensorflow,
   SiGit,
   SiGithub,
-  SiDocker,
-  SiLinux,
 } from "react-icons/si";
 
 /* ================= SKILLS DATA ================= */
 
-const skillCategories = [
-  {
-    title: "Languages",
-    skills: [
-      { name: "C", icon: <SiC />, level: 90 },
-      { name: "C++", icon: <SiCplusplus />, level: 85 },
-      { name: "Java", icon: <SiOpenjdk />, level: 88 },
-      { name: "JavaScript", icon: <SiJavascript />, level: 70 },
-      { name: "TypeScript", icon: <SiTypescript />, level: 65 },
-      { name: "Python", icon: <SiPython />, level: 75 },
-    ],
-  },
-  {
-    title: "Frontend",
-    skills: [
-      { name: "React", icon: <SiReact />, level: 92 },
-      { name: "Next.js", icon: <SiNextdotjs />, level: 88 },
-      { name: "Tailwind", icon: <SiTailwindcss />, level: 70 },
-      { name: "HTML", icon: <SiHtml5 />, level: 95 },
-      { name: "CSS", icon: <SiCss3 />, level: 90 },
-    ],
-  },
-  {
-    title: "Backend",
-    skills: [
-      { name: "Node.js", icon: <SiNodedotjs />, level: 85 },
-      { name: "Express", icon: <SiExpress />, level: 70 },
-      { name: "MongoDB", icon: <SiMongodb />, level: 78 },
-      { name: "Socket.io", icon: <SiSocketdotio />, level: 68 },
-    ],
-  },
-  {
-    title: "AI / ML",
-    skills: [
-      { name: "Python", icon: <SiPython />, level: 75 },
-      { name: "TensorFlow", icon: <SiTensorflow />, level: 60 },
-    ],
-  },
-  {
-    title: "Dev & Tools",
-    skills: [
-      { name: "Git", icon: <SiGit />, level: 85 },
-      { name: "GitHub", icon: <SiGithub />, level: 88 },
-      { name: "Docker", icon: <SiDocker />, level: 70 },
-      { name: "Linux", icon: <SiLinux />, level: 72 },
-    ],
-  },
+const technicalSkills = [
+  { name: "C", icon: <SiC />, level: 90 },
+  { name: "C++", icon: <SiCplusplus />, level: 85 },
+  { name: "Java", icon: <SiOpenjdk />, level: 88 },
+  { name: "JavaScript", icon: <SiJavascript />, level: 70 },
+  { name: "TypeScript", icon: <SiTypescript />, level: 65 },
+  { name: "Python", icon: <SiPython />, level: 75 },
+  { name: "React", icon: <SiReact />, level: 92 },
+  { name: "HTML", icon: <SiHtml5 />, level: 95 },
+  { name: "CSS", icon: <SiCss3 />, level: 90 },
+  { name: "Node.js", icon: <SiNodedotjs />, level: 85 },
+  { name: "Express", icon: <SiExpress />, level: 70 },
+  { name: "MongoDB", icon: <SiMongodb />, level: 78 },
+  { name: "Git", icon: <SiGit />, level: 85 },
+  { name: "GitHub", icon: <SiGithub />, level: 88 },
 ];
 
 // Flattened pills shown under the hero intro (mirrors the reference layout)
@@ -105,18 +67,13 @@ const heroPills = [
   "JavaScript",
   "TypeScript",
   "React",
-  "Next.js",
   "Node.js",
   "MongoDB",
   "Python",
   "Git",
-  "Docker",
 ];
 
-const totalSkillCount = skillCategories.reduce(
-  (sum, cat) => sum + cat.skills.length,
-  0
-);
+const totalSkillCount = technicalSkills.length;
 
 // Converts a numeric skill level into the text label the reference design uses
 function getLevelLabel(level: number) {
@@ -218,6 +175,7 @@ const techPulse = [
 /* ================= CHATBOT (canned Q&A, no backend needed) ================= */
 
 const BOT_NAME = "Kiro";
+const BOT_AVATAR = "/kiro-avatar.jpg";
 
 const QUICK_PROMPTS = [
   "What projects has Ayush built?",
@@ -234,8 +192,7 @@ function getBotReply(question: string): string {
     return `Ayush has built ${projects.length} projects including ${names}. Check the Projects section above for live links!`;
   }
   if (/(skill|tech|stack|language|know)/.test(q)) {
-    const cats = skillCategories.map((c) => c.title).join(", ");
-    return `Ayush works across ${cats}. His strongest areas are React, Next.js, and Node.js — scroll to the Skills section for the full breakdown.`;
+    return `Ayush works across languages, frontend, and backend technologies. His strongest areas are React, Node.js, and Java — scroll to the Skills section for the full breakdown.`;
   }
   if (/(contact|reach|email|phone|hire|whatsapp)/.test(q)) {
     return "You can reach Ayush at kayush3647@gmail.com or +91 6207279496, or just use the contact form below!";
@@ -258,6 +215,26 @@ export default function Page() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // ---- navbar show/hide on scroll ----
+  const [navVisible, setNavVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY < 60) {
+        setNavVisible(true);
+      } else if (currentY > lastScrollY.current) {
+        setNavVisible(false); // scrolling down -> hide
+      } else {
+        setNavVisible(true); // scrolling up -> show
+      }
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // ---- chatbot state ----
   const [chatOpen, setChatOpen] = useState(false);
@@ -357,6 +334,12 @@ export default function Page() {
     <main className="relative text-[#1a1a1a] overflow-x-hidden">
       {/* Global styles for cursor trail + fade-in animation */}
       <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+        #about, #skills, #projects, #education, #contact {
+          scroll-margin-top: 84px;
+        }
         @media (max-width: 767px) {
           .cursor-trail { display: none; }
         }
@@ -419,7 +402,11 @@ export default function Page() {
       <div className="relative z-10">
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-40 backdrop-blur bg-white/60 border-b border-black/5">
+      <nav
+        className={`fixed top-0 w-full z-40 backdrop-blur-md bg-white/25 border-b border-white/10 transition-transform duration-300 ease-in-out ${
+          navVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
         <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
           <a href="#hero" className="font-bold text-lg tracking-tight">
             {"<"}Ayush{"/>"}
@@ -431,7 +418,14 @@ export default function Page() {
             <a href="#education" className="hover:text-orange-500 transition">Education</a>
             <a href="#contact" className="hover:text-orange-500 transition">Contact</a>
           </div>
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md bg-orange-500 hover:bg-orange-600 hover:-translate-y-0.5 transition-all"
+            >
+              <Download size={16} /> Get Resume
+            </a>
             <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
@@ -475,6 +469,17 @@ export default function Page() {
             <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
             <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
             <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          </div>
+
+          <div className="px-6">
+            <a
+              href="/resume.pdf"
+              download
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-md bg-orange-500 hover:bg-orange-600 transition-all"
+            >
+              <Download size={16} /> Get Resume
+            </a>
           </div>
 
           <div className="mt-auto p-6 border-t border-black/5">
@@ -538,7 +543,7 @@ export default function Page() {
               >
                 My GitHub Overview 😁
               </a>
-              {/* Glass-style secondary buttons */}
+              {/* Glass-style secondary button */}
               <a
                 href="https://codolio.com/profile/confused.ayush"
                 target="_blank"
@@ -546,14 +551,6 @@ export default function Page() {
                 className="inline-flex items-center gap-2 text-gray-900 font-semibold px-6 py-3 rounded-full border border-white/40 bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/60 hover:-translate-y-0.5 transition-all"
               >
                 My Coding Profile 😑
-              </a>
-              <a
-                href="https://github.com/ayushkumar0808?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full border border-white/20 bg-[#1a1a1a]/80 backdrop-blur-md shadow-lg hover:bg-black hover:-translate-y-0.5 transition-all"
-              >
-                Watch My Repo 👀
               </a>
             </div>
 
@@ -583,19 +580,27 @@ export default function Page() {
               />
             </div>
 
-            <div className="absolute top-4 -left-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center">
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-4 -left-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
+            >
               <p className="text-xl font-bold">
                 <CountUp end={totalSkillCount} duration={2} />+
               </p>
               <p className="text-xs text-gray-600">Skills</p>
-            </div>
+            </motion.div>
 
-            <div className="absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center">
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
+            >
               <p className="text-xl font-bold">
                 <CountUp end={projects.length} duration={2} />+
               </p>
               <p className="text-xs text-gray-600">Projects</p>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -611,7 +616,7 @@ export default function Page() {
           About Me
         </motion.h2>
 
-        <p className="text-gray-600 leading-relaxed bg-white/60 backdrop-blur-sm rounded-2xl p-6">
+        <p className="text-gray-600 leading-relaxed">
           Hi, I'm Ayush Kumar — a passionate developer who loves building
           things with code and solving challenging problems. From fixing
           errors to mastering algorithms, I believe growth comes from
@@ -640,57 +645,48 @@ export default function Page() {
           <span className="h-px w-16 bg-orange-200" />
         </div>
 
-        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-12">
-          <div className="space-y-12">
-            {skillCategories.map((category, index) => (
-              <div key={index}>
-                <motion.h3
-                  initial={{ opacity: 0, x: -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Technical Skills */}
+          <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+            <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
+              <span className="text-orange-500">{"</>"}</span> Technical Skills
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {technicalSkills.map((skill, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-xl font-semibold mb-6 text-gray-800"
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-5 rounded-2xl bg-gray-50/70 border border-black/5"
                 >
-                  {category.title}
-                </motion.h3>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {category.skills.map((skill, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      whileHover={{ y: -3 }}
-                      transition={{ duration: 0.3 }}
-                      className="p-5 rounded-2xl bg-gray-50/70 border border-black/5"
-                    >
-                      <span className="text-2xl text-orange-500 mb-3 block">
-                        {skill.icon}
-                      </span>
-                      <p className="font-semibold">{skill.name}</p>
-                      <p className="text-sm text-gray-400">
-                        {getLevelLabel(skill.level)}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                  <span className="text-2xl text-orange-500 mb-3 block">
+                    {skill.icon}
+                  </span>
+                  <p className="font-semibold">{skill.name}</p>
+                  <p className="text-sm text-gray-400">
+                    {getLevelLabel(skill.level)}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* SOFT SKILLS */}
-        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-12 mt-8">
-          <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
-            <Users className="text-orange-500" size={22} /> Soft Skills
-          </h3>
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
-            {softSkills.map((skill) => (
-              <div key={skill} className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-orange-500" />
-                <span className="text-gray-700">{skill}</span>
-              </div>
-            ))}
+          {/* Soft Skills */}
+          <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+            <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
+              <Users className="text-orange-500" size={22} /> Soft Skills
+            </h3>
+            <div className="space-y-5">
+              {softSkills.map((skill) => (
+                <div key={skill} className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-orange-500" />
+                  <span className="text-gray-700">{skill}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1019,8 +1015,12 @@ export default function Page() {
             className="fixed bottom-24 right-6 z-[70] w-[90vw] max-w-sm h-[70vh] max-h-[560px] flex flex-col rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
           >
             <div className="flex items-center gap-3 px-4 py-3 bg-gray-900 text-white">
-              <span className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center">
-                <Bot size={20} />
+              <span className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-orange-400 shrink-0">
+                <img
+                  src={BOT_AVATAR}
+                  alt={BOT_NAME}
+                  className="w-full h-full object-cover"
+                />
               </span>
               <div>
                 <p className="font-semibold leading-tight">{BOT_NAME}</p>
@@ -1105,15 +1105,19 @@ export default function Page() {
       <button
         onClick={toggleChat}
         aria-label="Open chat assistant"
-        className="fixed bottom-6 right-6 z-[70] w-14 h-14 rounded-full shadow-lg flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white transition-colors"
+        className="fixed bottom-6 right-6 z-[70] w-14 h-14 rounded-full shadow-lg overflow-visible bg-orange-500 hover:bg-orange-600 text-white transition-colors flex items-center justify-center"
       >
         {chatOpen ? (
           <X size={24} />
         ) : (
-          <span className="relative">
-            <Bot size={26} />
+          <span className="relative block w-full h-full rounded-full overflow-hidden ring-2 ring-white">
+            <img
+              src={BOT_AVATAR}
+              alt={BOT_NAME}
+              className="w-full h-full object-cover"
+            />
             {showBadge && (
-              <span className="absolute -top-2 -right-2 w-4 h-4 flex items-center justify-center bg-red-500 text-white text-[9px] font-bold rounded-full border-2 border-white">
+              <span className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center bg-red-500 text-white text-[9px] font-bold rounded-full border-2 border-white">
                 1
               </span>
             )}
