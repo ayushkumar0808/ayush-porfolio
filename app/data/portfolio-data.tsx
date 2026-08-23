@@ -1,0 +1,204 @@
+import {
+  MessageCircle,
+  ShoppingCart,
+  Sparkles,
+  CalendarDays,
+} from "lucide-react";
+import {
+  SiC,
+  SiCplusplus,
+  SiJavascript,
+  SiTypescript,
+  SiOpenjdk,
+  SiReact,
+  SiHtml5,
+  SiCss3,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPython,
+  SiGit,
+  SiGithub,
+} from "react-icons/si";
+
+/* ================= SKILLS DATA ================= */
+
+export const technicalSkills = [
+  { name: "C", icon: <SiC />, level: 90 },
+  { name: "C++", icon: <SiCplusplus />, level: 85 },
+  { name: "Java", icon: <SiOpenjdk />, level: 88 },
+  { name: "JavaScript", icon: <SiJavascript />, level: 70 },
+  { name: "TypeScript", icon: <SiTypescript />, level: 65 },
+  { name: "Python", icon: <SiPython />, level: 75 },
+  { name: "React", icon: <SiReact />, level: 92 },
+  { name: "HTML", icon: <SiHtml5 />, level: 95 },
+  { name: "CSS", icon: <SiCss3 />, level: 90 },
+  { name: "Node.js", icon: <SiNodedotjs />, level: 85 },
+  { name: "Express", icon: <SiExpress />, level: 70 },
+  { name: "MongoDB", icon: <SiMongodb />, level: 78 },
+  { name: "Git", icon: <SiGit />, level: 85 },
+  { name: "GitHub", icon: <SiGithub />, level: 88 },
+];
+
+// Flattened pills shown under the hero intro (mirrors the reference layout)
+export const heroPills = [
+  "HTML/CSS",
+  "JavaScript",
+  "MERN Stack",
+  "React",
+  "Node.js",
+  "MongoDB",
+  "SQL",
+  "Python",
+  "Git",
+];
+
+export const totalSkillCount = technicalSkills.length;
+
+// Converts a numeric skill level into the text label the reference design uses
+export function getLevelLabel(level: number) {
+  if (level >= 85) return "Advanced";
+  if (level >= 70) return "Intermediate";
+  return "Beginner";
+}
+
+export const softSkills = [
+  "Communication",
+  "Problem Solving",
+  "Teamwork",
+  "Adaptability",
+  "Time Management",
+];
+
+/* ================= PROJECTS ================= */
+
+export const projects = [
+  {
+    name: "Real Time Chat App",
+    link: "https://real-time-chat-app-chi-five.vercel.app/",
+    desc: "Real-time messaging platform with authentication and live communication.",
+    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
+    icon: <MessageCircle size={48} />,
+  },
+  {
+    name: "Ecommerce Website",
+    link: "https://ecommercewebsite-orcin-pi.vercel.app/",
+    desc: "Modern ecommerce web app with cart and responsive UI.",
+    tags: ["React", "Tailwind", "E-commerce"],
+    icon: <ShoppingCart size={48} />,
+  },
+  {
+    name: "Nexora AI",
+    link: "https://nexora-ai-kappa-topaz.vercel.app/",
+    desc: "Intelligent AI chat companion with secure Google authentication.",
+    tags: ["Next.js", "AI", "Auth"],
+    icon: <Sparkles size={48} />,
+  },
+  {
+    name: "College Event Management Portal",
+    link: "https://college-event-management-portal-gules.vercel.app/",
+    desc: "Portal to create, manage, and track college events with role-based access.",
+    tags: ["React", "Node.js", "Express", "MongoDB"],
+    icon: <CalendarDays size={48} />,
+  },
+];
+
+/* ================= EDUCATION ================= */
+
+export const education = [
+  {
+    school: "M.S. Ramaiah University of Applied Sciences",
+    degree: "Master of Computer Application",
+    years: "2025 – Ongoing",
+    location: "Bengaluru, Karnataka",
+  },
+  {
+    school: "Ranchi University, Ranchi",
+    degree: "Bachelor of Computer Application",
+    years: "2021 – 2024",
+    location: "Ranchi, Jharkhand",
+  },
+  {
+    school: "St. Xavier's College",
+    degree: "Intermediate, Percentage: 75%",
+    years: "2018 – 2020",
+    location: "Ranchi, Jharkhand",
+  },
+];
+
+/* ================= CERTIFICATIONS ================= */
+/* Only one certificate has a live link right now — add more entries (with
+   their own `link`) as they're earned. Leave `link` empty for a cert with
+   no public link yet. */
+
+export const certifications = [
+  {
+    title: "Web Development Certification",
+    issuer: "KnowledgeGate",
+    date: "2025",
+    link: "https://www.knowledgegate.ai/certificate/84A7CBC7",
+  },
+];
+
+/* ================= TECH PULSE (static preview) ================= */
+/* Swap this static list for a live feed later if you wire up an API. */
+
+export const techPulse = [
+  {
+    title: "Next.js 15 adoption keeps climbing among full-stack teams",
+    tag: "Frontend",
+  },
+  {
+    title: "MongoDB Atlas rolls out new vector search improvements",
+    tag: "Backend",
+  },
+  {
+    title: "Socket.io remains the go-to for real-time app features",
+    tag: "Real-time",
+  },
+  {
+    title: "Docker Compose v3 workflows simplify local dev setups",
+    tag: "DevOps",
+  },
+  {
+    title: "TypeScript continues to lead new project starts on GitHub",
+    tag: "Languages",
+  },
+];
+
+/* ================= CHATBOT (canned Q&A, no backend needed) ================= */
+
+export const BOT_NAME = "Kiro";
+export const BOT_AVATAR = "/kiro-avatar.jpg";
+
+export const QUICK_PROMPTS = [
+  "What projects has Ayush built?",
+  "What are his skills?",
+  "How can I contact him?",
+  "What's his education?",
+];
+
+export function getBotReply(question: string): string {
+  const q = question.toLowerCase();
+
+  if (/(project|built|made|work)/.test(q)) {
+    const names = projects.map((p) => p.name).join(", ");
+    return `Ayush has built ${projects.length} projects including ${names}. Check the Projects section above for live links!`;
+  }
+  if (/(skill|tech|stack|language|know)/.test(q)) {
+    return `Ayush works across languages, frontend, and backend technologies. His strongest areas are React, Node.js, and Java — scroll to the Skills section for the full breakdown.`;
+  }
+  if (/(contact|reach|email|phone|hire|whatsapp)/.test(q)) {
+    return "You can reach Ayush at kayush3647@gmail.com or +91 6207279496, or just use the contact form below!";
+  }
+  if (/(education|degree|college|university|study)/.test(q)) {
+    return "Ayush is pursuing his MCA at M.S. Ramaiah University of Applied Sciences, after a BCA from Ranchi University.";
+  }
+  if (/(hi|hello|hey|namaste)/.test(q)) {
+    return "Hey! I'm here to help you learn more about Ayush. Ask me about his projects, skills, or how to get in touch.";
+  }
+  return "I'm a simple assistant so I might not catch everything — try asking about Ayush's projects, skills, education, or contact info!";
+}
+
+// Replace with your own Formspree form endpoint (see setup note in Contact.tsx).
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";

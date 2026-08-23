@@ -1,0 +1,108 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { GraduationCap, Award, ExternalLink } from "lucide-react";
+import { education, certifications } from "../data/portfolio-data";
+
+export default function EducationCertifications() {
+  return (
+    <section id="education" className="max-w-6xl mx-auto px-6 py-24">
+      <div className="grid md:grid-cols-2 gap-12">
+        {/* Education */}
+        <div>
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 text-3xl md:text-4xl font-bold mb-10"
+          >
+            <GraduationCap className="text-orange-500" size={32} /> Education
+          </motion.h2>
+
+          <div className="relative space-y-8 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-px before:bg-gray-200">
+            {education.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative pl-10"
+              >
+                <span className="absolute left-0 top-2 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-orange-100" />
+                <div className="hover-wiggle p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm">
+                  <div className="flex flex-wrap justify-between gap-2">
+                    <h3 className="font-bold text-lg">{item.school}</h3>
+                    <span className="text-sm font-semibold text-gray-500">
+                      {item.years}
+                    </span>
+                  </div>
+                  <p className="text-orange-500 font-medium mt-1">
+                    {item.degree}
+                  </p>
+                  <p className="text-sm text-gray-400 mt-1">{item.location}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications */}
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-between gap-3 mb-10"
+          >
+            <h2 className="flex items-center gap-3 text-3xl md:text-4xl font-bold">
+              <Award className="text-orange-500" size={32} /> Certifications
+            </h2>
+            {certifications.length > 0 && certifications[0].link && (
+              <a
+                href={certifications[0].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full border border-black/10 bg-white/80 shadow-sm hover:bg-orange-50 hover:border-orange-200 transition"
+              >
+                <ExternalLink size={14} /> View Certificate
+              </a>
+            )}
+          </motion.div>
+
+          <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-4 md:p-6">
+            <div className="space-y-3">
+              {certifications.map((cert, i) => {
+                const cardInner = (
+                  <div className="hover-wiggle flex items-start gap-4 p-4 rounded-2xl bg-white/80 border border-black/5">
+                    <span className="shrink-0 w-11 h-11 rounded-xl bg-orange-100 text-orange-500 flex items-center justify-center">
+                      <Award size={20} />
+                    </span>
+                    <div>
+                      <p className="font-semibold text-gray-900">{cert.title}</p>
+                      <p className="text-sm text-gray-400 mt-1">
+                        {cert.issuer} • {cert.date}
+                      </p>
+                    </div>
+                  </div>
+                );
+                return cert.link ? (
+                  <a
+                    key={i}
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    {cardInner}
+                  </a>
+                ) : (
+                  <div key={i}>{cardInner}</div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
