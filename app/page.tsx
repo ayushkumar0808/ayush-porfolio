@@ -24,6 +24,7 @@ import {
   CalendarDays,
   Users,
   Loader2,
+  Award,
 } from "lucide-react";
 import {
   SiC,
@@ -65,10 +66,11 @@ const technicalSkills = [
 const heroPills = [
   "HTML/CSS",
   "JavaScript",
-  "TypeScript",
+  "MERN Stack",
   "React",
   "Node.js",
   "MongoDB",
+  "SQL",
   "Python",
   "Git",
 ];
@@ -143,6 +145,20 @@ const education = [
     degree: "Intermediate, Percentage: 75%",
     years: "2018 – 2020",
     location: "Ranchi, Jharkhand",
+  },
+];
+
+/* ================= CERTIFICATIONS ================= */
+/* Only one certificate has a live link right now — add more entries (with
+   their own `link`) as they're earned. Leave `link` empty for a cert with
+   no public link yet. */
+
+const certifications = [
+  {
+    title: "Web Development Certification",
+    issuer: "KnowledgeGate",
+    date: "2025",
+    link: "https://www.knowledgegate.ai/certificate/84A7CBC7",
   },
 ];
 
@@ -362,6 +378,29 @@ export default function Page() {
           to { opacity: 1; transform: translateY(0); }
         }
         .fade-in-up { animation: fadeInUp 0.35s ease-out; }
+
+        @keyframes wiggle {
+          0%, 100% { transform: rotate(0deg) scale(1); }
+          25% { transform: rotate(-1.5deg) scale(1.02); }
+          75% { transform: rotate(1.5deg) scale(1.02); }
+        }
+        .hover-wiggle {
+          transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .hover-wiggle:hover {
+          background-color: rgba(249, 115, 22, 0.08);
+          border-color: rgba(249, 115, 22, 0.35);
+          animation: wiggle 0.4s ease-in-out;
+        }
+
+        @keyframes heartbeat {
+          0%, 100% { transform: scale(1); }
+          15% { transform: scale(1.12); }
+          30% { transform: scale(0.97); }
+          45% { transform: scale(1.08); }
+          60% { transform: scale(1); }
+        }
+        .heartbeat { animation: heartbeat 1.8s ease-in-out infinite; }
       `}</style>
 
       {/* Cursor trail - desktop only */}
@@ -403,7 +442,7 @@ export default function Page() {
 
       {/* Navbar */}
       <nav
-        className={`fixed top-0 w-full z-40 backdrop-blur-md bg-white/25 border-b border-white/10 transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 w-full z-40 bg-transparent transition-transform duration-300 ease-in-out ${
           navVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -412,11 +451,11 @@ export default function Page() {
             {"<"}Ayush{"/>"}
           </a>
           <div className="hidden md:flex gap-8 text-sm font-medium text-gray-700">
-            <a href="#about" className="hover:text-orange-500 transition">About</a>
-            <a href="#skills" className="hover:text-orange-500 transition">Skills</a>
-            <a href="#projects" className="hover:text-orange-500 transition">Projects</a>
-            <a href="#education" className="hover:text-orange-500 transition">Education</a>
-            <a href="#contact" className="hover:text-orange-500 transition">Contact</a>
+            <a href="#about" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">About</a>
+            <a href="#skills" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Skills</a>
+            <a href="#projects" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Projects</a>
+            <a href="#education" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Education</a>
+            <a href="#contact" className="hover:text-orange-500 transition inline-block hover:animate-[wiggle_0.4s_ease-in-out]">Contact</a>
           </div>
           <div className="hidden md:flex items-center gap-4">
             <a
@@ -572,7 +611,7 @@ export default function Page() {
             transition={{ duration: 0.8 }}
             className="relative flex justify-center"
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-8 border-white shadow-2xl overflow-hidden bg-white">
+            <div className="hover-wiggle relative w-72 h-72 md:w-96 md:h-96 rounded-full border-8 border-white shadow-2xl overflow-hidden bg-white">
               <img
                 src="/profile.jpg"
                 alt="Ayush Kumar"
@@ -583,7 +622,7 @@ export default function Page() {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-4 -left-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
+              className="hover-wiggle absolute top-4 -left-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
             >
               <p className="text-xl font-bold">
                 <CountUp end={totalSkillCount} duration={2} />+
@@ -594,7 +633,7 @@ export default function Page() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
+              className="hover-wiggle absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
             >
               <p className="text-xl font-bold">
                 <CountUp end={projects.length} duration={2} />+
@@ -660,7 +699,7 @@ export default function Page() {
                   viewport={{ once: true }}
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.3 }}
-                  className="p-5 rounded-2xl bg-gray-50/70 border border-black/5"
+                  className="hover-wiggle p-5 rounded-2xl bg-gray-50/70 border border-black/5"
                 >
                   <span className="text-2xl text-orange-500 mb-3 block">
                     {skill.icon}
@@ -681,7 +720,7 @@ export default function Page() {
             </h3>
             <div className="space-y-5">
               {softSkills.map((skill) => (
-                <div key={skill} className="flex items-center gap-3">
+                <div key={skill} className="hover-wiggle flex items-center gap-3 rounded-xl px-2 py-1 -mx-2">
                   <span className="w-2 h-2 rounded-full bg-orange-500" />
                   <span className="text-gray-700">{skill}</span>
                 </div>
@@ -720,7 +759,7 @@ export default function Page() {
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
+              className="hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
             >
               <div className="h-44 bg-gradient-to-br from-orange-50/80 to-gray-100/80 flex items-center justify-center text-orange-400">
                 {project.icon}
@@ -758,41 +797,103 @@ export default function Page() {
         </div>
       </section>
 
-      {/* EDUCATION */}
-      <section id="education" className="max-w-4xl mx-auto px-6 py-24">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 text-4xl font-bold mb-14 justify-center"
-        >
-          <GraduationCap className="text-orange-500" size={36} /> Education
-        </motion.h2>
-
-        <div className="relative space-y-8 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-px before:bg-gray-200">
-          {education.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+      {/* EDUCATION & CERTIFICATIONS */}
+      <section id="education" className="max-w-6xl mx-auto px-6 py-24">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Education */}
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative pl-10"
+              className="flex items-center gap-3 text-3xl md:text-4xl font-bold mb-10"
             >
-              <span className="absolute left-0 top-2 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-orange-100" />
-              <div className="p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm">
-                <div className="flex flex-wrap justify-between gap-2">
-                  <h3 className="font-bold text-lg">{item.school}</h3>
-                  <span className="text-sm font-semibold text-gray-500">
-                    {item.years}
-                  </span>
-                </div>
-                <p className="text-orange-500 font-medium mt-1">
-                  {item.degree}
-                </p>
-                <p className="text-sm text-gray-400 mt-1">{item.location}</p>
-              </div>
+              <GraduationCap className="text-orange-500" size={32} /> Education
+            </motion.h2>
+
+            <div className="relative space-y-8 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-px before:bg-gray-200">
+              {education.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="relative pl-10"
+                >
+                  <span className="absolute left-0 top-2 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-orange-100" />
+                  <div className="hover-wiggle p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm">
+                    <div className="flex flex-wrap justify-between gap-2">
+                      <h3 className="font-bold text-lg">{item.school}</h3>
+                      <span className="text-sm font-semibold text-gray-500">
+                        {item.years}
+                      </span>
+                    </div>
+                    <p className="text-orange-500 font-medium mt-1">
+                      {item.degree}
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">{item.location}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Certifications */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center justify-between gap-3 mb-10"
+            >
+              <h2 className="flex items-center gap-3 text-3xl md:text-4xl font-bold">
+                <Award className="text-orange-500" size={32} /> Certifications
+              </h2>
+              {certifications.length > 0 && certifications[0].link && (
+                <a
+                  href={certifications[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full border border-black/10 bg-white/80 shadow-sm hover:bg-orange-50 hover:border-orange-200 transition"
+                >
+                  <ExternalLink size={14} /> View Certificate
+                </a>
+              )}
             </motion.div>
-          ))}
+
+            <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-4 md:p-6">
+              <div className="space-y-3">
+                {certifications.map((cert, i) => {
+                  const CardInner = (
+                    <div className="hover-wiggle flex items-start gap-4 p-4 rounded-2xl bg-white/80 border border-black/5">
+                      <span className="shrink-0 w-11 h-11 rounded-xl bg-orange-100 text-orange-500 flex items-center justify-center">
+                        <Award size={20} />
+                      </span>
+                      <div>
+                        <p className="font-semibold text-gray-900">{cert.title}</p>
+                        <p className="text-sm text-gray-400 mt-1">
+                          {cert.issuer} • {cert.date}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                  return cert.link ? (
+                    <a
+                      key={i}
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      {CardInner}
+                    </a>
+                  ) : (
+                    <div key={i}>{CardInner}</div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1015,7 +1116,7 @@ export default function Page() {
             className="fixed bottom-24 right-6 z-[70] w-[90vw] max-w-sm h-[70vh] max-h-[560px] flex flex-col rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
           >
             <div className="flex items-center gap-3 px-4 py-3 bg-gray-900 text-white">
-              <span className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-orange-400 shrink-0">
+              <span className="heartbeat w-9 h-9 rounded-full overflow-hidden ring-2 ring-orange-400 shrink-0 inline-block">
                 <img
                   src={BOT_AVATAR}
                   alt={BOT_NAME}
@@ -1110,7 +1211,7 @@ export default function Page() {
         {chatOpen ? (
           <X size={24} />
         ) : (
-          <span className="relative block w-full h-full rounded-full overflow-hidden ring-2 ring-white">
+          <span className="heartbeat relative block w-full h-full rounded-full overflow-hidden ring-2 ring-white">
             <img
               src={BOT_AVATAR}
               alt={BOT_NAME}
