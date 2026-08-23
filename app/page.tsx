@@ -243,30 +243,33 @@ export default function Page() {
   };
 
   return (
-    <main className="relative bg-[#fafafa] text-[#1a1a1a] overflow-hidden">
-      {/* Background images: portrait crop for mobile, landscape crop for desktop */}
-      <img
-        src="/bg-mobile.jpg"
-        alt=""
-        aria-hidden="true"
-        className="fixed inset-0 w-full h-full object-cover object-top md:hidden -z-10"
-        loading="eager"
-        decoding="sync"
-      />
-      <img
-        src="/bg-desktop.jpg"
-        alt=""
-        aria-hidden="true"
-        className="hidden md:block fixed inset-0 w-full h-full object-cover object-center -z-10"
-        loading="eager"
-        decoding="sync"
-      />
+    <main className="relative text-[#1a1a1a] overflow-x-hidden">
+      {/* Background images: portrait crop for mobile, landscape crop for desktop.
+          Fixed + z-0 so it stays put behind everything while the page scrolls over it. */}
+      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+        <img
+          src="/bg-mobile.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-top md:hidden"
+          loading="eager"
+          decoding="sync"
+        />
+        <img
+          src="/bg-desktop.jpg"
+          alt=""
+          aria-hidden="true"
+          className="hidden md:block w-full h-full object-cover object-center"
+          loading="eager"
+          decoding="sync"
+        />
+      </div>
 
       {/* Everything below sits above the background */}
       <div className="relative z-10">
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-40 backdrop-blur bg-white/70 border-b border-black/5">
+      <nav className="fixed top-0 w-full z-40 backdrop-blur bg-white/60 border-b border-black/5">
         <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
           <a href="#hero" className="font-bold text-lg tracking-tight">
             {"<"}Ayush{"/>"}
@@ -406,7 +409,7 @@ export default function Page() {
               {heroPills.map((pill) => (
                 <span
                   key={pill}
-                  className="text-sm font-medium bg-white border border-black/10 px-4 py-2 rounded-full text-gray-700"
+                  className="text-sm font-medium bg-white/80 backdrop-blur-sm border border-black/10 px-4 py-2 rounded-full text-gray-700"
                 >
                   {pill}
                 </span>
@@ -428,14 +431,14 @@ export default function Page() {
               />
             </div>
 
-            <div className="absolute top-4 -left-4 bg-white rounded-2xl shadow-xl px-5 py-3 text-center">
+            <div className="absolute top-4 -left-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl px-5 py-3 text-center">
               <p className="text-xl font-bold">
                 <CountUp end={totalSkillCount} duration={2} />+
               </p>
               <p className="text-xs text-gray-500">Skills</p>
             </div>
 
-            <div className="absolute bottom-6 -right-4 bg-white rounded-2xl shadow-xl px-5 py-3 text-center">
+            <div className="absolute bottom-6 -right-4 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl px-5 py-3 text-center">
               <p className="text-xl font-bold">
                 <CountUp end={projects.length} duration={2} />+
               </p>
@@ -456,7 +459,7 @@ export default function Page() {
           About Me
         </motion.h2>
 
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-gray-600 leading-relaxed bg-white/60 backdrop-blur-sm rounded-2xl p-6">
           Hi, I'm Ayush Kumar — a passionate developer who loves building
           things with code and solving challenging problems. From fixing
           errors to mastering algorithms, I believe growth comes from
@@ -485,7 +488,7 @@ export default function Page() {
           <span className="h-px w-16 bg-orange-200" />
         </div>
 
-        <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-12">
+        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-12">
           <div className="space-y-12">
             {skillCategories.map((category, index) => (
               <div key={index}>
@@ -507,7 +510,7 @@ export default function Page() {
                       viewport={{ once: true }}
                       whileHover={{ y: -3 }}
                       transition={{ duration: 0.3 }}
-                      className="p-5 rounded-2xl bg-gray-50 border border-black/5"
+                      className="p-5 rounded-2xl bg-gray-50/70 border border-black/5"
                     >
                       <span className="text-2xl text-orange-500 mb-3 block">
                         {skill.icon}
@@ -525,7 +528,7 @@ export default function Page() {
         </div>
 
         {/* SOFT SKILLS */}
-        <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-12 mt-8">
+        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-12 mt-8">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <Users className="text-orange-500" size={22} /> Soft Skills
           </h3>
@@ -569,9 +572,9 @@ export default function Page() {
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="rounded-2xl bg-white border border-black/5 shadow-sm overflow-hidden"
+              className="rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
             >
-              <div className="h-44 bg-gradient-to-br from-orange-50 to-gray-100 flex items-center justify-center text-orange-400">
+              <div className="h-44 bg-gradient-to-br from-orange-50/80 to-gray-100/80 flex items-center justify-center text-orange-400">
                 {project.icon}
               </div>
 
@@ -628,7 +631,7 @@ export default function Page() {
               className="relative pl-10"
             >
               <span className="absolute left-0 top-2 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-orange-100" />
-              <div className="p-6 rounded-2xl bg-white border border-black/5 shadow-sm">
+              <div className="p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm">
                 <div className="flex flex-wrap justify-between gap-2">
                   <h3 className="font-bold text-lg">{item.school}</h3>
                   <span className="text-sm font-semibold text-gray-500">
@@ -647,7 +650,7 @@ export default function Page() {
 
       {/* TECH PULSE */}
       <section className="max-w-4xl mx-auto px-6 py-24">
-        <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-8 md:p-12">
+        <div className="rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-8 md:p-12">
           <div className="flex items-center justify-center gap-3 mb-2">
             <h2 className="text-3xl font-bold">Tech Pulse</h2>
             <span className="text-xs font-semibold bg-gray-100 text-gray-500 px-3 py-1 rounded-full">
@@ -662,7 +665,7 @@ export default function Page() {
             {techPulse.map((item, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between gap-4 p-4 rounded-xl bg-gray-50"
+                className="flex items-center justify-between gap-4 p-4 rounded-xl bg-gray-50/70"
               >
                 <div className="flex items-center gap-4">
                   <span className="text-gray-300 font-bold w-5">{i + 1}</span>
@@ -678,7 +681,7 @@ export default function Page() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="bg-[#0b1120] text-white">
+      <section id="contact" className="bg-[#0b1120]/90 backdrop-blur-sm text-white">
         <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
@@ -822,7 +825,7 @@ export default function Page() {
       </section>
 
       {/* FOOTER */}
-      <footer className="text-center py-8 text-gray-500 text-sm bg-[#0b1120] border-t border-white/5">
+      <footer className="text-center py-8 text-gray-500 text-sm bg-[#0b1120]/90 backdrop-blur-sm border-t border-white/5">
         © {new Date().getFullYear()} Ayush Kumar. Commit Today Build Tomorrow
       </footer>
 
@@ -830,6 +833,7 @@ export default function Page() {
     </main>
   );
 }
+
  
 
 // "use client";
