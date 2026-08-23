@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ayush-portfolio-com.vercel.app"),
   title: "Ayush | Full Stack Developer Portfolio",
   description:
-    "Ayush - Full Stack Developer based in Noida, India. Explore my projects, skills, and experience in web development.",
+    "Ayush - Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
   keywords: [
     "Ayush",
     "Ayush portfolio",
     "full stack developer",
-    "web developer Noida",
+    "web developer Bengaluru",
     "React developer",
     "Next.js developer",
   ],
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     url: "https://ayush-portfolio-com.vercel.app/",
     title: "Ayush | Full Stack Developer Portfolio",
     description:
-      "Full Stack Developer based in Noida, India. Explore my projects, skills, and experience in web development.",
+      "Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
     images: ["/profile.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ayush | Full Stack Developer Portfolio",
     description:
-      "Full Stack Developer based in Noida, India. Explore my projects, skills, and experience in web development.",
+      "Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
     images: ["/profile.jpg"],
   },
   verification: {

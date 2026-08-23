@@ -66,7 +66,7 @@ export default function Contact() {
               </span>
               <div>
                 <p className="text-xs text-gray-500">Location</p>
-                <p className="font-semibold">India</p>
+                <p className="font-semibold">Bengaluru, Karnataka</p>
               </div>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                 onChange={(e) =>
                   setForm({ ...form, email: e.target.value })
                 }
-                placeholder="your@email.com"
+                placeholder="your@gmail.com"
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-orange-500 transition"
               />
             </div>

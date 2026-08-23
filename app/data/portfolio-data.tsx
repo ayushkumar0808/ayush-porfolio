@@ -40,12 +40,12 @@ export const technicalSkills = [
   { name: "GitHub", icon: <SiGithub />, level: 88 },
 ];
 
-// Flattened pills shown under the hero intro (mirrors the reference layout)
+// Flattened pills shown under the hero intro section, derived from the technicalSkills array.
 export const heroPills = [
   "HTML/CSS",
   "JavaScript",
   "MERN Stack",
-  "React",
+  "React.js",
   "Node.js",
   "MongoDB",
   "SQL",
@@ -55,7 +55,6 @@ export const heroPills = [
 
 export const totalSkillCount = technicalSkills.length;
 
-// Converts a numeric skill level into the text label the reference design uses
 export function getLevelLabel(level: number) {
   if (level >= 85) return "Advanced";
   if (level >= 70) return "Intermediate";
@@ -81,13 +80,6 @@ export const projects = [
     icon: <MessageCircle size={48} />,
   },
   {
-    name: "Ecommerce Website",
-    link: "https://ecommercewebsite-orcin-pi.vercel.app/",
-    desc: "Modern ecommerce web app with cart and responsive UI.",
-    tags: ["React", "Tailwind", "E-commerce"],
-    icon: <ShoppingCart size={48} />,
-  },
-  {
     name: "Nexora AI",
     link: "https://nexora-ai-kappa-topaz.vercel.app/",
     desc: "Intelligent AI chat companion with secure Google authentication.",
@@ -100,6 +92,13 @@ export const projects = [
     desc: "Portal to create, manage, and track college events with role-based access.",
     tags: ["React", "Node.js", "Express", "MongoDB"],
     icon: <CalendarDays size={48} />,
+  },
+  {
+    name: "Ecommerce Website",
+    link: "https://ecommercewebsite-orcin-pi.vercel.app/",
+    desc: "Modern ecommerce web app with cart and responsive UI.",
+    tags: ["React", "Tailwind", "E-commerce"],
+    icon: <ShoppingCart size={48} />,
   },
 ];
 
@@ -127,21 +126,18 @@ export const education = [
 ];
 
 /* ================= CERTIFICATIONS ================= */
-/* Only one certificate has a live link right now — add more entries (with
-   their own `link`) as they're earned. Leave `link` empty for a cert with
-   no public link yet. */
 
 export const certifications = [
   {
-    title: "Web Development Certification",
+    title: "HTML Certification",
     issuer: "KnowledgeGate",
     date: "2025",
     link: "https://www.knowledgegate.ai/certificate/84A7CBC7",
   },
 ];
 
+
 /* ================= TECH PULSE (static preview) ================= */
-/* Swap this static list for a live feed later if you wire up an API. */
 
 export const techPulse = [
   {
@@ -166,18 +162,18 @@ export const techPulse = [
   },
 ];
 
-/* ================= CHATBOT (canned Q&A, no backend needed) ================= */
+/* ================= CHATBOT  ================= */
 
 export const BOT_NAME = "Kiro";
 export const BOT_AVATAR = "/kiro-avatar.jpg";
 
 export const QUICK_PROMPTS = [
   "Who is Ayush?",
-  "Who are you?",
   "What projects has Ayush built?",
   "What are his skills?",
   "How can I contact him?",
   "What's his education?",
+  "Who are you?",
 ];
 
 export function getBotReply(question: string): string {
@@ -209,4 +205,4 @@ export function getBotReply(question: string): string {
 }
 
 // Replace with your own Formspree form endpoint (see setup note in Contact.tsx).
-export const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/myegvvak";
