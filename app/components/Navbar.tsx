@@ -99,8 +99,8 @@ export default function Navbar() {
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 flex flex-col md:hidden"
         >
-          {/* Whole menu: transparent glass, page content blurred behind */}
-          <div className="flex-1 flex flex-col bg-white/40 backdrop-blur-2xl">
+          {/* Solid top section: links, resume button, connect icons */}
+          <div className="bg-white">
             <div className="flex justify-between items-center p-4 border-b border-black/5">
               <span className="font-bold text-lg tracking-tight">
                 {"<"}Ayush{"/>"}
@@ -153,6 +153,12 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+
+          {/* Remaining space: glassmorphism blur showing page content behind */}
+          <div
+            className="flex-1 bg-white/40 backdrop-blur-2xl"
+            onClick={() => setMenuOpen(false)}
+          />
         </motion.div>
       )}
     </>
