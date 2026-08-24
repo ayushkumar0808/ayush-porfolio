@@ -85,21 +85,24 @@ export const projects = [
     link: "https://nexora-ai-kappa-topaz.vercel.app/",
     desc: "Intelligent AI chat companion with secure Google authentication.",
     tags: ["Next.js", "AI", "Auth"],
-    icon: <Sparkles size={48} />,
+    image:
+      "https://img.magnific.com/free-vector/cute-friendly-robot-with-welcome-speech-bubble_107791-29910.jpg?semt=ais_hybrid&w=740&q=80",
   },
   {
     name: "College Event Management Portal",
     link: "https://college-event-management-portal-gules.vercel.app/",
     desc: "Portal to create, manage, and track college events with role-based access.",
     tags: ["React", "Node.js", "Express", "MongoDB"],
-    icon: <CalendarDays size={48} />,
+    image:
+      "https://image.slidesharecdn.com/collegeeventmanagement-presentation-210413110429/75/College-Event-Management-Presentation-1-2048.jpg",
   },
   {
     name: "Ecommerce Website",
     link: "https://ecommercewebsite-orcin-pi.vercel.app/",
     desc: "Modern ecommerce web app with cart and responsive UI.",
     tags: ["React", "Tailwind", "E-commerce"],
-    icon: <ShoppingCart size={48} />,
+    image:
+      "https://img.magnific.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
   },
 ];
 
