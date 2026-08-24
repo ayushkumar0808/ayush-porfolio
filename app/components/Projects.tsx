@@ -11,9 +11,10 @@ export default function Projects() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold text-center"
+        className="flip-heading text-4xl md:text-5xl font-bold text-center cursor-default"
       >
-        Featured <span className="text-orange-500">Projects</span>
+        <span className="flip-dark text-[#1a1a1a]">Featured</span>{" "}
+        <span className="flip-orange text-orange-500">Projects</span>
       </motion.h2>
 
       <p className="text-center text-gray-500 mt-3">Some of my recent work</p>

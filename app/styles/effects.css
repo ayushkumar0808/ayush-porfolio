@@ -79,6 +79,33 @@ html {
   transform: scale(1.05);
 }
 
+/* Big section headings: color-flip + gentle shake on hover (desktop only) */
+@keyframes headingShake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-2px) rotate(-0.6deg); }
+  40% { transform: translateX(2px) rotate(0.6deg); }
+  60% { transform: translateX(-1.5px) rotate(-0.4deg); }
+  80% { transform: translateX(1.5px) rotate(0.4deg); }
+}
+.flip-heading .flip-dark,
+.flip-heading .flip-orange {
+  transition: color 0.3s ease;
+}
+@media (hover: hover) and (min-width: 768px) {
+  .flip-heading:hover {
+    animation: headingShake 0.45s ease-in-out;
+  }
+  .flip-heading:hover .flip-dark {
+    color: #f97316;
+  }
+  .flip-heading:hover .flip-orange {
+    color: #1a1a1a;
+  }
+  .dark .flip-heading:hover .flip-orange {
+    color: #f5f5f5;
+  }
+}
+
 
 /* Kiro avatar heartbeat */
 @keyframes heartbeat {
