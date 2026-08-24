@@ -111,7 +111,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-7 p-6 text-xl font-medium text-gray-700">
+          <div className="flex flex-col gap-7 px-6 pt-6 pb-8 text-xl font-medium text-gray-700">
             {NAV_LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
                 {link.label}
@@ -119,20 +119,18 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="px-6">
-            <a
-              href="/resume.pdf"
-              download
-              onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-md bg-orange-500 hover:bg-orange-600 transition-all"
-            >
-              <Download size={16} /> Get Resume
-            </a>
-          </div>
+          <a
+            href="/resume.pdf"
+            download
+            onClick={() => setMenuOpen(false)}
+            className="mx-6 flex items-center justify-center gap-2 text-white text-base font-semibold py-4 rounded-xl shadow-md bg-orange-500 hover:bg-orange-600 transition-all"
+          >
+            <Download size={18} /> Get Resume
+          </a>
 
-          <div className="mt-auto p-6 border-t border-black/5">
+          <div className="mt-8 border-t border-black/5 px-6 py-6">
             <p className="text-xs text-gray-400 mb-4">Connect</p>
-            <div className="flex gap-5">
+            <div className="flex gap-6">
               <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
                 <Linkedin size={22} />
               </a>
