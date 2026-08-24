@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-// Desktop-only glowing dot trail that follows the mouse (see .trail-dot / .cursor-trail in effects.css)
 export default function CursorTrail() {
   const trailRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const mouse = useRef({ x: -100, y: -100 });
@@ -12,6 +11,11 @@ export default function CursorTrail() {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const isDesktop =
+      window.matchMedia("(min-width: 768px)").matches &&
+      window.matchMedia("(pointer: fine)").matches;
+    if (!isDesktop) return;
+
     const onMove = (e: MouseEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY };
     };

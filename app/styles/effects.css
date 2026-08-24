@@ -143,6 +143,6 @@ html {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 /* Dim the fixed background photos a touch so text stays readable */
-.dark .fixed.-inset-1 img {
+.dark .bg-photo-layer img {
   filter: brightness(0.5);
 }
