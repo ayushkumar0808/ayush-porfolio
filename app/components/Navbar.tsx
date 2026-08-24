@@ -99,8 +99,8 @@ export default function Navbar() {
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 flex flex-col md:hidden"
         >
-          {/* Solid top section: links, resume button, connect icons */}
-          <div className="bg-white">
+          {/* Whole menu: transparent glass, page content blurred behind */}
+          <div className="flex-1 flex flex-col bg-white/40 backdrop-blur-2xl">
             <div className="flex justify-between items-center p-4 border-b border-black/5">
               <span className="font-bold text-lg tracking-tight">
                 {"<"}Ayush{"/>"}
@@ -131,8 +131,8 @@ export default function Navbar() {
             </a>
 
             <div className="mt-8 border-t border-black/5 px-6 py-6">
-              <p className="text-xs text-gray-400 mb-4">Connect</p>
-              <div className="flex gap-6">
+              <p className="text-xs text-gray-400 mb-4 text-center">Connect</p>
+              <div className="flex justify-center gap-6">
                 <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
                   <Linkedin size={22} />
                 </a>
@@ -153,12 +153,6 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-
-          {/* Remaining space: glassmorphism blur showing page content behind */}
-          <div
-            className="flex-1 bg-white/40 backdrop-blur-2xl"
-            onClick={() => setMenuOpen(false)}
-          />
         </motion.div>
       )}
     </>
