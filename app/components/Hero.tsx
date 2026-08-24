@@ -12,7 +12,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center pt-28 pb-16"
     >
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
-        <div>
+        <div className="order-2 md:order-1">
           <h1 className="text-5xl md:text-6xl font-black leading-tight">
             Hi, I'm <span className="text-orange-500">Ayush</span>
           </h1>
@@ -77,7 +77,7 @@ export default function Hero() {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative flex justify-center"
+          className="order-1 md:order-2 relative flex justify-center"
         >
           <div className="absolute -inset-6 -z-10 rounded-full bg-orange-400/40 blur-3xl animate-pulse" />
           <div className="hover-wiggle relative w-72 h-72 md:w-96 md:h-96 rounded-full border-8 border-white shadow-2xl overflow-hidden bg-white">
