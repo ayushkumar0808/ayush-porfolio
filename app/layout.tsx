@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -7,8 +9,6 @@ const orbitron = Orbitron({
 });
 
 export { orbitron };
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,39 +22,46 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ayush-portfolio-com.vercel.app"),
-  title: "Ayush | Full Stack Developer Portfolio",
+
+  title: "Ayush Kumar | Full Stack Developer Portfolio",
+
   description:
-    "Ayush - Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
+    "Ayush Kumar - Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
+
   keywords: [
-    "Ayush",
-    "Ayush portfolio",
+    "Ayush Kumar",
+    "Ayush Kumar portfolio",
     "full stack developer",
     "web developer Bengaluru",
     "React developer",
-    "Next.js developer",
+    "Node.js developer",
   ],
-  authors: [{ name: "Ayush" }],
+
+  authors: [{ name: "Ayush Kumar" }],
+
   robots: {
     index: true,
     follow: true,
   },
+
   openGraph: {
     type: "website",
     url: "https://ayush-portfolio-com.vercel.app/",
-    title: "Ayush | Full Stack Developer Portfolio",
+    title: "Ayush Kumar | Full Stack Developer Portfolio",
     description:
       "Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
     images: ["/profile.jpg"],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Ayush | Full Stack Developer Portfolio",
+    title: "Ayush Kumar | Full Stack Developer Portfolio",
     description:
       "Full Stack Developer based in Bengaluru, India. Explore my projects, skills, and experience in web development.",
     images: ["/profile.jpg"],
   },
+
   verification: {
-    // Google Search Console code
     google: "DyTp4xolklreoYTv4HAaKDsHrVlhLOrjgSd0HpzwDdw",
   },
 };
@@ -64,8 +71,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Ayush Kumar",
+    url: "https://ayush-portfolio-com.vercel.app/",
+    jobTitle: "Full Stack Developer",
+    sameAs: [
+      "https://www.linkedin.com/in/ayushkumar0808",
+      "https://github.com/ayushkumar0808",
+      "https://leetcode.com/u/confused_ayush",
+    ],
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+        />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
