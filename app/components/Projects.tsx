@@ -36,31 +36,33 @@ export default function Projects() {
             className="hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
           >
             {/* PROJECT BANNER */}
-            <div className="h-48 bg-gray-100 overflow-hidden">
+            <div className="relative h-48 bg-gray-100 overflow-hidden group">
               {project.image && (
                 <img
                   src={project.image}
                   alt={`${project.name} preview`}
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-[1.02]"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
                 />
               )}
+
+              {/* CENTERED LINK ICON OVERLAY */}
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name}`}
+                className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300"
+              >
+                <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-orange-500 shadow-lg scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
+                  <ExternalLink size={20} />
+                </span>
+              </a>
             </div>
 
-            
             {/* PROJECT DETAILS */}
             <div className="p-8">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-2xl font-semibold">{project.name}</h3>
-
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${project.name}`}
-                  className="text-orange-500 shrink-0"
-                >
-                  <ExternalLink size={20} />
-                </a>
               </div>
 
               <p className="text-gray-500 mb-5">{project.desc}</p>
