@@ -36,14 +36,14 @@ export default function Projects() {
             className="hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
           >
             {/* PROJECT BANNER */}
-            <div className="h-48 p-3 bg-white overflow-hidden">
-              <div className="group w-full h-full rounded-xl overflow-hidden bg-gray-100">
+            <div className="h-48 bg-gray-100 overflow-hidden">
+              {project.image && (
                 <img
                   src={project.image}
                   alt={`${project.name} preview`}
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-[1.02]"
                 />
-              </div>
+              )}
             </div>
 
             
