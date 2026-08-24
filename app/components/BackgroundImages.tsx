@@ -1,6 +1,6 @@
 export default function BackgroundImages() {
   return (
-    <div className="fixed -inset-2 z-0 pointer-events-none overflow-hidden">
+    <div className="fixed -inset-1 w-[calc(100%+8px)] h-[calc(100%+8px)] z-0 pointer-events-none overflow-hidden">
       <img
         src="/bg-mobile.jpg"
         alt=""
