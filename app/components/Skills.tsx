@@ -11,13 +11,13 @@ export default function Skills() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flip-heading text-4xl md:text-5xl font-bold text-center cursor-default"
+        className="flip-heading text-5xl md:text-7xl font-bold text-center cursor-default"
       >
         <span className="flip-dark text-[#1a1a1a]">Skills &</span>{" "}
         <span className="flip-orange text-orange-500">Expertise</span>
       </motion.h2>
 
-      <p className="text-center text-gray-500 mt-3">
+      <p className="text-center text-lg md:text-xl font-semibold text-gray-600 mt-4">
         My technical toolkit and professional attributes
       </p>
 

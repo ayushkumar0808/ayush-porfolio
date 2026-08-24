@@ -58,7 +58,7 @@ html {
   animation: fadeInUp 0.35s ease-out;
 }
 
-/* Light orange hover tint + gentle zoom used across cards, links, avatars */
+
 .hover-wiggle {
   transition: background-color 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease, transform 0.35s ease;
@@ -70,7 +70,7 @@ html {
   transform: scale(1.03);
 }
 
-/* Zoom only, no background tint — used where the hover background is set separately */
+
 .hover-zoom {
   transition: transform 0.35s ease, background-color 0.25s ease;
   transform: scale(1);
@@ -79,13 +79,10 @@ html {
   transform: scale(1.05);
 }
 
-/* Big section headings: color-flip + gentle shake on hover (desktop only) */
-@keyframes headingShake {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  20% { transform: translateX(-2px) rotate(-0.6deg); }
-  40% { transform: translateX(2px) rotate(0.6deg); }
-  60% { transform: translateX(-1.5px) rotate(-0.4deg); }
-  80% { transform: translateX(1.5px) rotate(0.4deg); }
+
+.flip-heading {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 .flip-heading .flip-dark,
 .flip-heading .flip-orange {
@@ -93,7 +90,7 @@ html {
 }
 @media (hover: hover) and (min-width: 768px) {
   .flip-heading:hover {
-    animation: headingShake 0.45s ease-in-out;
+    transform: scale(1.04);
   }
   .flip-heading:hover .flip-dark {
     color: #f97316;

@@ -11,13 +11,13 @@ export default function Projects() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flip-heading text-4xl md:text-5xl font-bold text-center cursor-default"
+        className="flip-heading text-5xl md:text-7xl font-bold text-center cursor-default"
       >
         <span className="flip-dark text-[#1a1a1a]">Featured</span>{" "}
         <span className="flip-orange text-orange-500">Projects</span>
       </motion.h2>
 
-      <p className="text-center text-gray-500 mt-3">Some of my recent work</p>
+      <p className="text-center text-lg md:text-xl font-semibold text-gray-600 mt-4">Some of my recent work</p>
 
       <div className="flex items-center justify-center gap-4 my-10">
         <span className="h-px w-16 bg-orange-500" />
@@ -38,24 +38,25 @@ export default function Projects() {
           >
             {/* PROJECT BANNER */}
             <div className="relative h-48 bg-gray-100 overflow-hidden">
-              {project.image && (
-                <img
-                  src={project.image}
-                  alt={`${project.name} preview`}
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-                />
-              )}
-
-              {/* CENTERED LINK ICON OVERLAY — hover anywhere on the card triggers this */}
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open ${project.name}`}
-                className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300"
+                className="group/tap absolute inset-0 block"
               >
-                <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-orange-500 shadow-lg scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
-                  <ExternalLink size={20} />
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05] group-active/tap:scale-[1.05]"
+                  />
+                )}
+
+                <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 group-active/tap:bg-black/30 transition-colors duration-300">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-orange-500 shadow-lg scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-active/tap:scale-100 group-active/tap:opacity-100 transition-all duration-300">
+                    <ExternalLink size={20} />
+                  </span>
                 </span>
               </a>
             </div>
