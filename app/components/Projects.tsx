@@ -34,10 +34,10 @@ export default function Projects() {
             viewport={{ once: true }}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.3 }}
-            className="hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
+            className="group hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
           >
             {/* PROJECT BANNER */}
-            <div className="relative h-48 bg-gray-100 overflow-hidden group">
+            <div className="relative h-48 bg-gray-100 overflow-hidden">
               {project.image && (
                 <img
                   src={project.image}
@@ -46,7 +46,7 @@ export default function Projects() {
                 />
               )}
 
-              {/* CENTERED LINK ICON OVERLAY */}
+              {/* CENTERED LINK ICON OVERLAY — hover anywhere on the card triggers this */}
               <a
                 href={project.link}
                 target="_blank"
