@@ -1,23 +1,22 @@
-// Background images: portrait crop for mobile, landscape crop for desktop.
-// Fixed + z-0 so it stays put behind everything while the page scrolls over it.
 export default function BackgroundImages() {
   return (
-    <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+    <div className="fixed -inset-1 w-[calc(100%+8px)] h-[calc(100%+8px)] z-0 pointer-events-none overflow-hidden">
       <img
         src="/bg-mobile.jpg"
         alt=""
         aria-hidden="true"
-        className="w-full h-full object-cover object-top md:hidden"
+        className="absolute inset-0 w-full h-full object-cover object-top md:hidden"
         loading="eager"
-        decoding="sync"
+        decoding="async"
       />
+
       <img
         src="/bg-desktop.jpg"
         alt=""
         aria-hidden="true"
-        className="hidden md:block w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
         loading="eager"
-        decoding="sync"
+        decoding="async"
       />
     </div>
   );
