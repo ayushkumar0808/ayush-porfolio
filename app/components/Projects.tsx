@@ -38,20 +38,15 @@ export default function Projects() {
             {/* PROJECT BANNER */}
             <div className="h-48 p-3 bg-white overflow-hidden">
               <div className="group w-full h-full rounded-xl overflow-hidden bg-gray-100">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={`${project.name} preview`}
-                    className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-50 to-gray-100 text-orange-400">
-                    {project.icon}
-                  </div>
-                )}
+                <img
+                  src={project.image}
+                  alt={`${project.name} preview`}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
               </div>
             </div>
 
+            
             {/* PROJECT DETAILS */}
             <div className="p-8">
               <div className="flex items-start justify-between mb-3">
