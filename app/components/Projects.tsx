@@ -15,6 +15,9 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
       viewport={{ once: true }}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3 }}
+      onTouchStart={() => setPressed(true)}
+      onTouchEnd={() => setPressed(false)}
+      onTouchCancel={() => setPressed(false)}
       className="group hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
     >
       {/* PROJECT BANNER */}
@@ -24,9 +27,6 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open ${project.name}`}
-          onTouchStart={() => setPressed(true)}
-          onTouchEnd={() => setPressed(false)}
-          onTouchCancel={() => setPressed(false)}
           className="absolute inset-0 block touch-manipulation"
         >
           {project.image && (
