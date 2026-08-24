@@ -16,9 +16,7 @@ export default function Projects() {
         Featured <span className="text-orange-500">Projects</span>
       </motion.h2>
 
-      <p className="text-center text-gray-500 mt-3">
-        Some of my recent work
-      </p>
+      <p className="text-center text-gray-500 mt-3">Some of my recent work</p>
 
       <div className="flex items-center justify-center gap-4 my-10">
         <span className="h-px w-16 bg-orange-500" />
@@ -38,26 +36,26 @@ export default function Projects() {
             className="hover-wiggle rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm overflow-hidden"
           >
             {/* PROJECT BANNER */}
-            <div className="h-44 bg-gray-100 overflow-hidden">
-              {project.image ? (
-                <img
-                  src={project.image}
-                  alt={`${project.name} preview`}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-orange-50/80 to-gray-100/80 flex items-center justify-center text-orange-400">
-                  {project.icon}
-                </div>
-              )}
+            <div className="h-48 p-3 bg-white overflow-hidden">
+              <div className="w-full h-full rounded-xl overflow-hidden bg-gray-100">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-orange-50/80 to-gray-100/80 flex items-center justify-center text-orange-400">
+                    {project.icon}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* PROJECT DETAILS */}
             <div className="p-8">
               <div className="flex items-start justify-between mb-3">
-                <h3 className="text-2xl font-semibold">
-                  {project.name}
-                </h3>
+                <h3 className="text-2xl font-semibold">{project.name}</h3>
 
                 <a
                   href={project.link}
@@ -70,9 +68,7 @@ export default function Projects() {
                 </a>
               </div>
 
-              <p className="text-gray-500 mb-5">
-                {project.desc}
-              </p>
+              <p className="text-gray-500 mb-5">{project.desc}</p>
 
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
