@@ -80,6 +80,7 @@ export default function Hero() {
           className="relative flex justify-center"
         >
           <div className="hover-wiggle relative w-72 h-72 md:w-96 md:h-96 rounded-full border-8 border-white shadow-2xl overflow-hidden bg-white">
+            <div className="absolute -inset-6 -z-10 rounded-full bg-orange-400/40 blur-3xl animate-pulse" />
             <img
               src="/profile.jpg"
               alt="Ayush Kumar"
@@ -89,7 +90,7 @@ export default function Hero() {
 
           <motion.div
             animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
             className="hover-wiggle absolute top-4 -left-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
           >
             <p className="text-xl font-bold">
@@ -99,12 +100,11 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, -8, 0] }}
             transition={{
-              duration: 3.5,
+              duration: 1.6,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 0.5,
             }}
             className="hover-wiggle absolute bottom-6 -right-4 bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl shadow-xl px-5 py-3 text-center"
           >
