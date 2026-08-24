@@ -58,7 +58,7 @@ html {
   animation: fadeInUp 0.35s ease-out;
 }
 
-
+/* Light orange hover tint + gentle zoom used across cards, links, avatars */
 .hover-wiggle {
   transition: background-color 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease, transform 0.35s ease;
@@ -70,7 +70,7 @@ html {
   transform: scale(1.03);
 }
 
-
+/* Zoom only, no background tint — used where the hover background is set separately */
 .hover-zoom {
   transition: transform 0.35s ease, background-color 0.25s ease;
   transform: scale(1);
@@ -79,9 +79,8 @@ html {
   transform: scale(1.05);
 }
 
-
+/* Big section headings: color-flip + gentle zoom on hover (desktop only) */
 .flip-heading {
-  display: inline-block;
   transition: transform 0.3s ease;
 }
 .flip-heading .flip-dark,

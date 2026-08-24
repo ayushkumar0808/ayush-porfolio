@@ -11,7 +11,7 @@ export default function Projects() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flip-heading text-5xl md:text-7xl font-bold text-center cursor-default"
+        className="flip-heading text-3xl sm:text-5xl md:text-7xl font-extrabold text-center cursor-default"
       >
         <span className="flip-dark text-[#1a1a1a]">Featured</span>{" "}
         <span className="flip-orange text-orange-500">Projects</span>
@@ -43,7 +43,8 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open ${project.name}`}
-                className="group/tap absolute inset-0 block"
+                onTouchStart={() => {}}
+                className="group/tap absolute inset-0 block touch-manipulation"
               >
                 {project.image && (
                   <img
@@ -53,6 +54,7 @@ export default function Projects() {
                   />
                 )}
 
+                {/* CENTERED LINK ICON OVERLAY — hover (desktop) or touch (mobile) anywhere on the banner triggers this */}
                 <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 group-active/tap:bg-black/30 transition-colors duration-300">
                   <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-orange-500 shadow-lg scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-active/tap:scale-100 group-active/tap:opacity-100 transition-all duration-300">
                     <ExternalLink size={20} />

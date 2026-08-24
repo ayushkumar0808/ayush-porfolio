@@ -11,7 +11,7 @@ export default function Skills() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flip-heading text-5xl md:text-7xl font-bold text-center cursor-default"
+        className="flip-heading text-3xl sm:text-5xl md:text-7xl font-extrabold text-center cursor-default"
       >
         <span className="flip-dark text-[#1a1a1a]">Skills &</span>{" "}
         <span className="flip-orange text-orange-500">Expertise</span>
