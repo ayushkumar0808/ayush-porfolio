@@ -122,18 +122,21 @@ export const education = [
     degree: "Master of Computer Application",
     years: "2025 – Ongoing",
     location: "Bengaluru, Karnataka",
+    link: "https://www.msruas.ac.in/",
   },
   {
     school: "Ranchi University, Ranchi",
     degree: "Bachelor of Computer Application",
     years: "2021 – 2024",
     location: "Ranchi, Jharkhand",
+    link: "https://ranchiuniversity.ac.in/",
   },
   {
     school: "St. Xavier's College",
     degree: "Intermediate, Percentage: 75%",
     years: "2018 – 2020",
     location: "Ranchi, Jharkhand",
+    link: "https://sxcran.ac.in/",
   },
 ];
 

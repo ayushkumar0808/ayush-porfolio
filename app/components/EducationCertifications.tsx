@@ -31,7 +31,13 @@ export default function EducationCertifications() {
                 <span className="absolute left-0 top-2 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-orange-100" />
                 <div className="hover-wiggle p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm">
                   <div className="flex flex-wrap justify-between gap-2">
-                    <h3 className="font-bold text-lg">{item.school}</h3>
+                    {item.link ? (
+                      <a href={item.link} target="_blank" rel="noopener noreferrer">
+                        <h3 className="font-bold text-lg">{item.school}</h3>
+                      </a>
+                    ) : (
+                      <h3 className="font-bold text-lg">{item.school}</h3>
+                    )}
                     <span className="text-sm font-semibold text-gray-500">
                       {item.years}
                     </span>
