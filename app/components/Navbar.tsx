@@ -97,59 +97,68 @@ export default function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 bg-white flex flex-col md:hidden"
+          className="fixed inset-0 z-50 flex flex-col md:hidden"
         >
-          <div className="flex justify-between items-center p-4 border-b border-black/5">
-            <span className="font-bold text-lg tracking-tight">
-              {"<"}Ayush{"/>"}
-            </span>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <button aria-label="Close menu" onClick={() => setMenuOpen(false)}>
-                <X size={24} />
-              </button>
+          {/* Solid top section: links, resume button, connect icons */}
+          <div className="bg-white">
+            <div className="flex justify-between items-center p-4 border-b border-black/5">
+              <span className="font-bold text-lg tracking-tight">
+                {"<"}Ayush{"/>"}
+              </span>
+              <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <button aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+                  <X size={24} />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-7 px-6 pt-6 pb-8 text-xl font-medium text-gray-700">
+              {NAV_LINKS.map((link) => (
+                <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <a
+              href="/resume.pdf"
+              download
+              onClick={() => setMenuOpen(false)}
+              className="mx-6 flex items-center justify-center gap-2 text-white text-base font-semibold py-4 rounded-xl shadow-md bg-orange-500 hover:bg-orange-600 transition-all"
+            >
+              <Download size={18} /> Get Resume
+            </a>
+
+            <div className="mt-8 border-t border-black/5 px-6 py-6">
+              <p className="text-xs text-gray-400 mb-4">Connect</p>
+              <div className="flex gap-6">
+                <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
+                  <Linkedin size={22} />
+                </a>
+                <a href="https://github.com/ayushkumar0808" aria-label="GitHub">
+                  <Github size={22} />
+                </a>
+                <a href="mailto:kayush3647@gmail.com" aria-label="Email">
+                  <Mail size={22} />
+                </a>
+                <a
+                  href="https://wa.me/916207279496"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle size={22} />
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-7 px-6 pt-6 pb-8 text-xl font-medium text-gray-700">
-            {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          <a
-            href="/resume.pdf"
-            download
+          {/* Remaining space: glassmorphism blur showing page content behind */}
+          <div
+            className="flex-1 bg-white/40 backdrop-blur-2xl"
             onClick={() => setMenuOpen(false)}
-            className="mx-6 flex items-center justify-center gap-2 text-white text-base font-semibold py-4 rounded-xl shadow-md bg-orange-500 hover:bg-orange-600 transition-all"
-          >
-            <Download size={18} /> Get Resume
-          </a>
-
-          <div className="mt-8 border-t border-black/5 px-6 py-6">
-            <p className="text-xs text-gray-400 mb-4">Connect</p>
-            <div className="flex gap-6">
-              <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
-                <Linkedin size={22} />
-              </a>
-              <a href="https://github.com/ayushkumar0808" aria-label="GitHub">
-                <Github size={22} />
-              </a>
-              <a href="mailto:kayush3647@gmail.com" aria-label="Email">
-                <Mail size={22} />
-              </a>
-              <a
-                href="https://wa.me/916207279496"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle size={22} />
-              </a>
-            </div>
-          </div>
+          />
         </motion.div>
       )}
     </>
