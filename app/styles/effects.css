@@ -53,7 +53,6 @@ html {
 }
 
 /* Light orange hover tint + gentle zoom used across cards, links, avatars */
-/* No rotation/shake here on purpose — only a smooth scale so nothing jitters on hover */
 .hover-wiggle {
   transition: background-color 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease, transform 0.35s ease;

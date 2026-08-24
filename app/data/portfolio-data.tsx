@@ -77,7 +77,8 @@ export const projects = [
     link: "https://real-time-chat-app-chi-five.vercel.app/",
     desc: "Real-time messaging platform with authentication and live communication.",
     tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-    icon: <MessageCircle size={48} />,
+    image:
+      "https://media.geeksforgeeks.org/wp-content/uploads/20240223113231/Online-Chat-Application.webp",
   },
   {
     name: "Nexora AI",
@@ -134,7 +135,7 @@ export const certifications = [
     date: "2026",
     link: "https://www.knowledgegate.ai/certificate/84A7CBC7",
   },
-   {
+  {
     title: "CSS Certification",
     issuer: "KnowledgeGate",
     date: "2026",
@@ -146,14 +147,13 @@ export const certifications = [
     date: "2026",
     link: "https://www.knowledgegate.ai/certificate/1DDDA2C6",
   },
-    {
+  {
     title: "Web Development Certification",
     issuer: "Udemy",
     date: "2026",
     link: "",
   },
 ];
-
 
 /* ================= TECH PULSE (static preview) ================= */
 
