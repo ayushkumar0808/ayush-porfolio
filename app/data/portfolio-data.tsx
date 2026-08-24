@@ -19,6 +19,7 @@ import {
   SiPython,
   SiGit,
   SiGithub,
+  SiMysql,
 } from "react-icons/si";
 
 /* ================= SKILLS DATA ================= */
@@ -38,6 +39,7 @@ export const technicalSkills = [
   { name: "MongoDB", icon: <SiMongodb />, level: 78 },
   { name: "Git", icon: <SiGit />, level: 85 },
   { name: "GitHub", icon: <SiGithub />, level: 88 },
+  { name: "MySQL", icon: <SiMysql />, level: 80 },
 ];
 
 // Flattened pills shown under the hero intro section, derived from the technicalSkills array.
@@ -72,6 +74,7 @@ export const softSkills = [
   "Creativity",
   "Leadership",
   "Work Ethic",
+  "Self-Motivation",
 ];
 
 /* ================= PROJECTS ================= */
