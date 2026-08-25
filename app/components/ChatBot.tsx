@@ -57,9 +57,9 @@ export default function ChatBot() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="fixed bottom-24 right-6 z-[70] max-w-[220px]"
+            className="fixed bottom-24 right-6 z-[70] max-w-[220px] md:max-w-max"
           >
-            <div className="relative bg-white rounded-2xl rounded-br-sm shadow-xl px-4 py-3 text-sm text-gray-800 border border-gray-200">
+            <div className="relative bg-white rounded-2xl rounded-br-sm shadow-xl px-4 py-3 text-sm text-gray-800 border border-gray-200 md:whitespace-nowrap">
               <button
                 onClick={() => setShowGreeting(false)}
                 aria-label="Dismiss greeting"
