@@ -40,9 +40,12 @@ export default function Contact() {
           </p>
 
           <div className="space-y-5">
-            <div className="flex items-center gap-4">
-              <span className="p-3 rounded-xl bg-white/5">
-                <Mail size={18} />
+            <div className="group flex items-center gap-4">
+              <span className="p-3 rounded-xl bg-white/5 transition-colors duration-300 group-hover:bg-orange-500/10">
+                <Mail
+                  size={18}
+                  className="transition-all duration-300 group-hover:scale-125 group-hover:text-orange-500"
+                />
               </span>
               <div>
                 <p className="text-xs text-gray-500">Email</p>
@@ -50,9 +53,12 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <span className="p-3 rounded-xl bg-white/5">
-                <Phone size={18} />
+            <div className="group flex items-center gap-4">
+              <span className="p-3 rounded-xl bg-white/5 transition-colors duration-300 group-hover:bg-orange-500/10">
+                <Phone
+                  size={18}
+                  className="transition-all duration-300 group-hover:scale-125 group-hover:text-orange-500"
+                />
               </span>
               <div>
                 <p className="text-xs text-gray-500">Phone</p>
@@ -60,9 +66,12 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <span className="p-3 rounded-xl bg-white/5">
-                <MapPin size={18} />
+            <div className="group flex items-center gap-4">
+              <span className="p-3 rounded-xl bg-white/5 transition-colors duration-300 group-hover:bg-orange-500/10">
+                <MapPin
+                  size={18}
+                  className="transition-all duration-300 group-hover:scale-125 group-hover:text-orange-500"
+                />
               </span>
               <div>
                 <p className="text-xs text-gray-500">Location</p>
@@ -75,29 +84,41 @@ export default function Contact() {
           <div className="flex gap-3">
             <a
               href="https://www.linkedin.com/in/ayushkumar0808"
-              className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition"
+              className="group p-3 rounded-xl bg-white/5 hover:bg-[#0A66C2]/10 transition-colors duration-300"
             >
-              <Linkedin size={18} />
+              <Linkedin
+                size={18}
+                className="transition-all duration-300 group-hover:scale-125 group-hover:text-[#0A66C2]"
+              />
             </a>
             <a
               href="https://github.com/ayushkumar0808"
-              className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition"
+              className="group p-3 rounded-xl bg-white/5 hover:bg-[#FDE047]/10 transition-colors duration-300"
             >
-              <Github size={18} />
+              <Github
+                size={18}
+                className="transition-all duration-300 group-hover:scale-125 group-hover:text-[#FDE047]"
+              />
             </a>
             <a
               href="https://www.instagram.com/confused.ayush"
-              className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition"
+              className="group p-3 rounded-xl bg-white/5 hover:bg-[#E1306C]/10 transition-colors duration-300"
             >
-              <Instagram size={18} />
+              <Instagram
+                size={18}
+                className="transition-all duration-300 group-hover:scale-125 group-hover:text-[#E1306C]"
+              />
             </a>
             <a
               href="https://wa.me/916207279496"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition"
+              className="group p-3 rounded-xl bg-white/5 hover:bg-[#25D366]/10 transition-colors duration-300"
             >
-              <MessageCircle size={18} />
+              <MessageCircle
+                size={18}
+                className="transition-all duration-300 group-hover:scale-125 group-hover:text-[#25D366]"
+              />
             </a>
           </div>
         </div>
