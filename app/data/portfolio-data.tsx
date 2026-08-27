@@ -165,7 +165,7 @@ export const certifications = [
     title: "Web Development Certification",
     issuer: "Udemy",
     date: "2026",
-    link: "",
+    link: "https://www.udemy.com/certificate/UC-e2c1dd29-e192-4f87-b073-fc53c36a3d65",
   },
 ];
 
