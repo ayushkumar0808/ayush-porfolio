@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, CalendarDays, MapPin, ExternalLink } from "lucide-react";
+import { Briefcase, CalendarDays, MapPin } from "lucide-react";
 import { experience } from "../data/portfolio-data";
 
 function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
@@ -36,12 +36,6 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
           </li>
         ))}
       </ul>
-
-      {exp.link && (
-        <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-orange-600">
-          <ExternalLink size={14} /> Visit company site
-        </span>
-      )}
     </>
   );
 
