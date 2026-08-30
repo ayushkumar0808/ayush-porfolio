@@ -62,15 +62,12 @@ export function getLevelLabel(level: number) {
   if (level >= 70) return "Intermediate";
   return "Beginner";
 }
-
 export const softSkills = [
   "Communication",
   "Problem Solving",
   "Teamwork",
   "Adaptability",
   "Time Management",
-  "Decision Making",
-  "Confidence",
   "Creativity",
   "Leadership",
   "Work Ethic",
