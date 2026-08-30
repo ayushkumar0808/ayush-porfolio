@@ -48,13 +48,11 @@ export default function Skills() {
                 transition={{ duration: 0.3 }}
                 className="hover-wiggle flex flex-col md:flex-row md:items-center gap-1.5 md:gap-3 p-4 rounded-2xl bg-gray-50/70 border border-black/5"
               >
-                <span className="flex items-center gap-1 text-2xl text-orange-500 shrink-0 mb-1.5 md:mb-0">
+                <span className="text-2xl text-orange-500 shrink-0 mb-1.5 md:mb-0">
                   {skill.icon}
                 </span>
-                <div className="min-w-0">
-                  <p className="font-semibold leading-tight break-words">
-                    {skill.name}
-                  </p>
+                <div>
+                  <p className="font-semibold leading-tight">{skill.name}</p>
                   <p className="text-sm text-gray-400 leading-tight">
                     {getLevelLabel(skill.level)}
                   </p>
