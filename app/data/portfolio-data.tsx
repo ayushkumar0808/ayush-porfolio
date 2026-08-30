@@ -29,7 +29,7 @@ export const technicalSkills = [
   { name: "C++", icon: <SiCplusplus />, level: 60 },
   { name: "Java", icon: <SiOpenjdk />, level: 88 },
   {
-    name: "Js|Ts",
+    name: "JS|TS",
     icon: (
       <>
         <SiJavascript /> <SiTypescript />
@@ -76,8 +76,6 @@ export const softSkills = [
   "Problem Solving",
   "Teamwork",
   "Adaptability",
-  "Time Management",
-  "Creativity",
   "Work Ethic",
   "Self-Motivation",
 ];
