@@ -28,15 +28,8 @@ export const technicalSkills = [
   { name: "C", icon: <SiC />, level: 90 },
   { name: "C++", icon: <SiCplusplus />, level: 60 },
   { name: "Java", icon: <SiOpenjdk />, level: 88 },
-  {
-    name: "JS|TS",
-    icon: (
-      <>
-        <SiJavascript /> <SiTypescript />
-      </>
-    ),
-    level: 90,
-  },
+  { name: "JS", icon: <SiJavascript />, level: 90 },
+  { name: "TS", icon: <SiTypescript />, level: 80 },
   { name: "Python", icon: <SiPython />, level: 75 },
   { name: "React", icon: <SiReact />, level: 92 },
   { name: "HTML", icon: <SiHtml5 />, level: 95 },
@@ -44,7 +37,6 @@ export const technicalSkills = [
   { name: "Node.js", icon: <SiNodedotjs />, level: 85 },
   { name: "Express", icon: <SiExpress />, level: 90 },
   { name: "MongoDB", icon: <SiMongodb />, level: 90 },
-  { name: "Git", icon: <SiGit />, level: 75 },
   { name: "GitHub", icon: <SiGithub />, level: 75 },
   { name: "MySQL", icon: <SiMysql />, level: 75 },
   { name: "Docker", icon: <Sparkles />, level: 60 },
