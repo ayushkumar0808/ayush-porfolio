@@ -28,8 +28,15 @@ export const technicalSkills = [
   { name: "C", icon: <SiC />, level: 90 },
   { name: "C++", icon: <SiCplusplus />, level: 60 },
   { name: "Java", icon: <SiOpenjdk />, level: 88 },
-  { name: "JavaScript", icon: <SiJavascript />, level: 90 },
-  { name: "TypeScript", icon: <SiTypescript />, level: 90 },
+  {
+    name: "Js|Ts",
+    icon: (
+      <>
+        <SiJavascript /> <SiTypescript />
+      </>
+    ),
+    level: 90,
+  },
   { name: "Python", icon: <SiPython />, level: 75 },
   { name: "React", icon: <SiReact />, level: 92 },
   { name: "HTML", icon: <SiHtml5 />, level: 95 },
@@ -40,6 +47,7 @@ export const technicalSkills = [
   { name: "Git", icon: <SiGit />, level: 75 },
   { name: "GitHub", icon: <SiGithub />, level: 75 },
   { name: "MySQL", icon: <SiMysql />, level: 75 },
+  { name: "Docker", icon: <Sparkles />, level: 60 },
 ];
 
 // Flattened pills shown under the hero intro section, derived from the technicalSkills array.
