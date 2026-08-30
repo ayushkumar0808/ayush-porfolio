@@ -69,7 +69,6 @@ export const softSkills = [
   "Teamwork",
   "Adaptability",
   "Work Ethic",
-  "Self-Motivation",
 ];
 
 /* ================= EXPERIENCE ================= */
