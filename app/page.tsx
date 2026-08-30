@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import EducationCertifications from "./components/EducationCertifications";
 import TechPulse from "./components/TechPulse";
@@ -25,6 +26,7 @@ export default function Page() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
         <EducationCertifications />
         <TechPulse />
@@ -36,34 +38,6 @@ export default function Page() {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -201,8 +175,6 @@ export default function Page() {
 //         </div>
 //       </nav>
 
-
-
 //       {/* HERO */}
 //       <section className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
 
@@ -299,10 +271,6 @@ export default function Page() {
 //           and beautiful user experiences.
 //         </p>
 
-
-
-
-
 //         <div className="flex gap-4 mt-8 flex-wrap justify-center">
 
 //           <motion.a
@@ -344,7 +312,6 @@ export default function Page() {
 
 //           </motion.a>
 
-
 //           <motion.a
 //             whileHover={{ scale: 1.1 }}
 //             whileTap={{ scale: 0.95 }}
@@ -359,9 +326,7 @@ export default function Page() {
 
 //           </motion.a>
 
-          
 //         </div>
-
 
 //       </section>
 
@@ -381,8 +346,6 @@ export default function Page() {
 //           I believe growth comes from consistency and curiosity. Currently sharpening
 //           my skills in DSA and modern web development while working toward my goal of becoming a top-tier developer.
 //           I enjoy working with  real-time technologies as well and creating impactful digital experiences.
-
-            
 
 //         </p>
 //       </section>

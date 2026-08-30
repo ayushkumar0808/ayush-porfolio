@@ -2,12 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MessageCircle, Menu, X, Download } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  MessageCircle,
+  Menu,
+  X,
+  Download,
+} from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#education", label: "Education" },
   { href: "#contact", label: "Contact" },
@@ -68,7 +77,10 @@ export default function Navbar() {
             >
               <Download size={16} /> Get Resume
             </a>
-            <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/ayushkumar0808"
+              aria-label="LinkedIn"
+            >
               <Linkedin size={18} />
             </a>
             <a href="https://github.com/ayushkumar0808" aria-label="GitHub">
@@ -107,7 +119,10 @@ export default function Navbar() {
               </span>
               <div className="flex items-center gap-3">
                 <ThemeToggle />
-                <button aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setMenuOpen(false)}
+                >
                   <X size={24} />
                 </button>
               </div>
@@ -115,7 +130,11 @@ export default function Navbar() {
 
             <div className="flex flex-col gap-7 px-6 pt-6 pb-8 text-xl font-medium text-gray-700">
               {NAV_LINKS.map((link) => (
-                <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {link.label}
                 </a>
               ))}
@@ -133,7 +152,10 @@ export default function Navbar() {
             <div className="mt-8 border-t border-black/5 px-6 py-6">
               <p className="text-xs text-gray-400 mb-4 text-center">Connect</p>
               <div className="flex justify-center gap-6">
-                <a href="https://www.linkedin.com/in/ayushkumar0808" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/ayushkumar0808"
+                  aria-label="LinkedIn"
+                >
                   <Linkedin size={22} />
                 </a>
                 <a href="https://github.com/ayushkumar0808" aria-label="GitHub">

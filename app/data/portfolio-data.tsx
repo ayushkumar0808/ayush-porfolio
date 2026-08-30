@@ -77,6 +77,39 @@ export const softSkills = [
   "Self-Motivation",
 ];
 
+/* ================= EXPERIENCE ================= */
+
+export const experience = [
+  {
+    title: "HR Intern",
+    company: "GoMechanic",
+    type: "On-site",
+    duration: "Jun 2025 - Sep 2025",
+    location: "",
+    bullets: [
+      "Gained exposure to corporate workflows, teamwork, and management practices.",
+      "Recruited 20+ candidates across multiple cities for various roles.",
+      "Managed interview scheduling and feedback communication using Outlook.",
+    ],
+    link: "",
+  },
+  {
+    title: "MERN Stack Intern",
+    company: "Mayinkrish Ventures Pvt. Ltd.",
+    type: "On-site",
+    duration: "Jul 2026 - Aug 2026 · 2 mos",
+    location: "Bengaluru, Karnataka, India",
+    bullets: [
+      "Learned and implemented the MERN Stack through hands-on development.",
+      "Built a full-stack College Event Management Portal using MongoDB, Express.js, React.js, and Node.js.",
+      "Implemented JWT-based authentication and role-based access control for Students, Organizers, and Admin.",
+      "Developed features including event creation, registration, event management, and organizer dashboard.",
+      "Deployed the application and gained practical experience in full-stack web development.",
+    ],
+    link: "https://www.mayinkrish.com/",
+  },
+];
+
 /* ================= PROJECTS ================= */
 
 export const projects = [
