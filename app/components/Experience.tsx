@@ -10,7 +10,7 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
   const cardInner = (
     <>
       <div className="flex items-start justify-between gap-2 mb-3">
-        <h3 className="font-bold text-lg text-gray-900">{exp.title}</h3>
+        <h3 className="font-bold text-lg">{exp.title}</h3>
         <span
           className={`shrink-0 text-xs font-semibold px-3 py-1 rounded-full ${
             isUpcoming
@@ -23,7 +23,7 @@ function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
       </div>
 
       {isUpcoming ? (
-        <p className="text-sm text-gray-500 leading-relaxed mt-2">{exp.desc}</p>
+        <p className="text-sm text-gray-400 leading-relaxed mt-2">{exp.desc}</p>
       ) : (
         <>
           <p className="flex items-center gap-2 text-orange-500 font-medium mb-1">
