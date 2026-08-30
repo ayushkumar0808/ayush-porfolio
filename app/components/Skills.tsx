@@ -46,15 +46,17 @@ export default function Skills() {
                 viewport={{ once: true }}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.3 }}
-                className="hover-wiggle p-4 rounded-2xl bg-gray-50/70 border border-black/5"
+                className="hover-wiggle flex items-center gap-3 p-4 rounded-2xl bg-gray-50/70 border border-black/5"
               >
-                <span className="text-2xl text-orange-500 mb-1.5 block">
+                <span className="text-2xl text-orange-500 shrink-0">
                   {skill.icon}
                 </span>
-                <p className="font-semibold leading-tight">{skill.name}</p>
-                <p className="text-sm text-gray-400 leading-tight">
-                  {getLevelLabel(skill.level)}
-                </p>
+                <div>
+                  <p className="font-semibold leading-tight">{skill.name}</p>
+                  <p className="text-sm text-gray-400 leading-tight">
+                    {getLevelLabel(skill.level)}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
