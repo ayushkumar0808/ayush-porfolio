@@ -46,9 +46,9 @@ export default function Skills() {
                 viewport={{ once: true }}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.3 }}
-                className="hover-wiggle flex items-center gap-3 p-4 rounded-2xl bg-gray-50/70 border border-black/5"
+                className="hover-wiggle flex flex-col md:flex-row md:items-center gap-1.5 md:gap-3 p-4 rounded-2xl bg-gray-50/70 border border-black/5"
               >
-                <span className="text-2xl text-orange-500 shrink-0">
+                <span className="text-2xl text-orange-500 shrink-0 mb-1.5 md:mb-0">
                   {skill.icon}
                 </span>
                 <div>
