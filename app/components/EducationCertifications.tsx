@@ -7,6 +7,26 @@ import { education, certifications } from "../data/portfolio-data";
 export default function EducationCertifications() {
   return (
     <section id="education" className="max-w-6xl mx-auto px-6 py-24">
+      <motion.h2
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flip-heading text-3xl sm:text-5xl md:text-7xl font-extrabold text-center cursor-default"
+      >
+        <span className="flip-dark text-[#1a1a1a]">Education &</span>{" "}
+        <span className="flip-orange text-orange-500">Certification</span>
+      </motion.h2>
+
+      <p className="text-center text-lg md:text-xl font-semibold text-gray-600 mt-4">
+        My academic background and credentials
+      </p>
+
+      <div className="flex items-center justify-center gap-4 my-10">
+        <span className="h-px w-16 bg-orange-500" />
+        <GraduationCap className="text-orange-500" size={20} />
+        <span className="h-px w-16 bg-orange-200" />
+      </div>
+
       <div className="grid md:grid-cols-2 gap-12">
         {/* Education */}
         <div>
@@ -45,7 +65,9 @@ export default function EducationCertifications() {
                     <p className="text-orange-500 font-medium mt-1">
                       {item.degree}
                     </p>
-                    <p className="text-sm text-gray-400 mt-1">{item.location}</p>
+                    <p className="text-sm text-gray-400 mt-1">
+                      {item.location}
+                    </p>
                   </a>
                 ) : (
                   <div className="hover-wiggle p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/5 shadow-sm">
@@ -58,7 +80,9 @@ export default function EducationCertifications() {
                     <p className="text-orange-500 font-medium mt-1">
                       {item.degree}
                     </p>
-                    <p className="text-sm text-gray-400 mt-1">{item.location}</p>
+                    <p className="text-sm text-gray-400 mt-1">
+                      {item.location}
+                    </p>
                   </div>
                 )}
               </motion.div>
@@ -88,7 +112,9 @@ export default function EducationCertifications() {
                       <Award size={20} />
                     </span>
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900">{cert.title}</p>
+                      <p className="font-semibold text-gray-900">
+                        {cert.title}
+                      </p>
                       <p className="text-sm text-gray-400 mt-1">
                         {cert.issuer} • {cert.date}
                       </p>
