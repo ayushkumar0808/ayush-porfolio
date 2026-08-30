@@ -81,11 +81,23 @@ export const softSkills = [
 
 export const experience = [
   {
+    title: "HR Intern",
+    company: "GoMechanic",
+    type: "On-site",
+    duration: "Jun 2025 - Sep 2025",
+    location: "",
+    bullets: [
+      "Gained exposure to corporate workflows, teamwork, and management practices.",
+      "Recruited 20+ candidates across multiple cities for various roles.",
+    ],
+    link: "",
+  },
+  {
     title: "MERN Stack Intern",
     company: "Mayinkrish Ventures Pvt. Ltd.",
-    type: "Internship",
-    duration: "Jul 2026 - Aug 2026",
-    location: "Bengaluru, Karnataka, India · On-site",
+    type: "On-site",
+    duration: "Jul 2026 - Aug 2026 · 2 mos",
+    location: "Bengaluru, Karnataka, India",
     bullets: [
       "Learned and implemented the MERN Stack through hands-on development.",
       "Built a full-stack College Event Management Portal using MongoDB, Express.js, React.js, and Node.js.",
@@ -196,7 +208,7 @@ export const certifications = [
   },
 ];
 
-/* ================= TECH PULSE (static preview) ================= */
+/* ================= TECH PULSE ================= */
 
 export const techPulse = [
   {
@@ -216,7 +228,8 @@ export const techPulse = [
     tag: "DevOps",
   },
   {
-    title: "TypeScript continues to lead new project starts on GitHub",
+    title:
+      "TypeScript/Javascript continues to lead new project starts on GitHub",
     tag: "Languages",
   },
 ];
@@ -229,10 +242,10 @@ export const BOT_AVATAR = "/kiro-avatar.jpg";
 export const QUICK_PROMPTS = [
   "Who is Ayush?",
   "What projects has Ayush built?",
+  "What's his work experience?",
   "What are his skills?",
   "How can I contact him?",
   "What's his education?",
-  "Who are you?",
 ];
 
 export function getBotReply(question: string): string {
@@ -243,6 +256,13 @@ export function getBotReply(question: string): string {
   }
   if (/(who are you|what are you|your name)/.test(q)) {
     return `I'm ${BOT_NAME}, Ayush's virtual assistant! I'm here to answer questions about his projects, skills, education, and how to get in touch with him.`;
+  }
+  if (/(experience|intern|internship|job|company|worked at|career)/.test(q)) {
+    const roles = experience
+      .filter((e) => e.company)
+      .map((e) => `${e.title} at ${e.company}`)
+      .join(", ");
+    return `Ayush has hands-on experience as ${roles}. Check the Experience section above for the full details!`;
   }
   if (/(project|built|made|work)/.test(q)) {
     const names = projects.map((p) => p.name).join(", ");
@@ -260,8 +280,8 @@ export function getBotReply(question: string): string {
   if (/(hi|hello|hey|namaste)/.test(q)) {
     return "Hey! I'm here to help you learn more about Ayush. Ask me about his projects, skills, or how to get in touch.";
   }
-  return "I'm a simple assistant so I might not catch everything — try asking about Ayush's projects, skills, education, or contact info!";
+  return "I'm a simple assistant so I might not catch everything — try asking about Ayush's experience, projects, skills, education, or contact info!";
 }
 
-// Replace with your own Formspree form endpoint (see setup note in Contact.tsx).
+//Formspree
 export const FORMSPREE_ENDPOINT = "https://formspree.io/f/myegvvak";
