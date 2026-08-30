@@ -31,7 +31,7 @@ export default function Skills() {
         <span className="h-px w-16 bg-orange-200" />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 items-start">
+      <div className="grid md:grid-cols-2 gap-8 md:items-stretch">
         {/* Technical Skills */}
         <div className="hover-wiggle self-start rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
@@ -65,7 +65,7 @@ export default function Skills() {
         </div>
 
         {/* Soft Skills */}
-        <div className="hover-wiggle self-start rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
+        <div className="hover-wiggle md:h-full flex flex-col rounded-3xl bg-white/70 backdrop-blur-sm border border-black/5 shadow-sm p-6 md:p-10">
           <h3 className="flex items-center gap-2 text-xl font-semibold mb-6 text-gray-800">
             <Users className="text-orange-500" size={22} /> Soft Skills
           </h3>
@@ -81,7 +81,7 @@ export default function Skills() {
             ))}
           </div>
 
-          <div className="mt-8 flex items-center gap-3 rounded-2xl bg-orange-50 border border-orange-100 p-5">
+          <div className="mt-8 md:mt-auto flex items-center gap-3 rounded-2xl bg-orange-50 border border-orange-100 p-5">
             <Brain className="text-orange-500 shrink-0" size={22} />
             <p className="text-sm italic text-gray-600">
               "Always eager to learn and adapt to new technologies and
