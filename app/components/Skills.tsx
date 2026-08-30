@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users } from "lucide-react";
-import { technicalSkills, softSkills, getLevelLabel } from "../data/portfolio-data";
+import { Users, Brain } from "lucide-react";
+import {
+  technicalSkills,
+  softSkills,
+  getLevelLabel,
+} from "../data/portfolio-data";
 
 export default function Skills() {
   return (
@@ -63,11 +67,22 @@ export default function Skills() {
           </h3>
           <div className="space-y-5">
             {softSkills.map((skill) => (
-              <div key={skill} className="hover-wiggle flex items-center gap-3 rounded-xl px-2 py-1 -mx-2">
+              <div
+                key={skill}
+                className="hover-wiggle flex items-center gap-3 rounded-xl px-2 py-1 -mx-2"
+              >
                 <span className="w-2 h-2 rounded-full bg-orange-500" />
                 <span className="text-gray-700">{skill}</span>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 flex items-center gap-3 rounded-2xl bg-orange-50 border border-orange-100 p-5">
+            <Brain className="text-orange-500 shrink-0" size={22} />
+            <p className="text-sm italic text-gray-600">
+              "Always eager to learn and adapt to new technologies and
+              challenges."
+            </p>
           </div>
         </div>
       </div>
