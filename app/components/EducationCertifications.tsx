@@ -11,7 +11,7 @@ export default function EducationCertifications() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flip-heading text-3xl sm:text-5xl md:text-7xl font-extrabold text-center cursor-default"
+        className="flip-heading text-2xl sm:text-4xl md:text-7xl font-extrabold text-center cursor-default"
       >
         <span className="flip-dark text-[#1a1a1a]">Education &</span>{" "}
         <span className="flip-orange text-orange-500">Certification</span>
