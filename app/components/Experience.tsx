@@ -5,37 +5,54 @@ import { Briefcase, CalendarDays, MapPin } from "lucide-react";
 import { experience } from "../data/portfolio-data";
 
 function ExperienceCard({ exp }: { exp: (typeof experience)[number] }) {
+  const isUpcoming = !exp.company;
+
   const cardInner = (
     <>
       <div className="flex items-start justify-between gap-2 mb-3">
         <h3 className="font-bold text-lg text-gray-900">{exp.title}</h3>
-        <span className="shrink-0 text-xs font-semibold bg-orange-50 text-orange-600 px-3 py-1 rounded-full">
+        <span
+          className={`shrink-0 text-xs font-semibold px-3 py-1 rounded-full ${
+            isUpcoming
+              ? "bg-orange-100 text-orange-700"
+              : "bg-orange-50 text-orange-600"
+          }`}
+        >
           {exp.type}
         </span>
       </div>
 
-      <p className="flex items-center gap-2 text-orange-500 font-medium mb-1">
-        <Briefcase size={16} /> {exp.company}
-      </p>
+      {isUpcoming ? (
+        <p className="text-sm text-gray-500 leading-relaxed mt-2">{exp.desc}</p>
+      ) : (
+        <>
+          <p className="flex items-center gap-2 text-orange-500 font-medium mb-1">
+            <Briefcase size={16} /> {exp.company}
+          </p>
 
-      <p className="flex items-center gap-2 text-sm text-gray-400 mb-1">
-        <CalendarDays size={14} /> {exp.duration}
-      </p>
+          <p className="flex items-center gap-2 text-sm text-gray-400 mb-1">
+            <CalendarDays size={14} /> {exp.duration}
+          </p>
 
-      {exp.location && (
-        <p className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-          <MapPin size={14} /> {exp.location}
-        </p>
+          {exp.location && (
+            <p className="flex items-center gap-2 text-sm text-gray-400 mb-4">
+              <MapPin size={14} /> {exp.location}
+            </p>
+          )}
+
+          <ul className={`space-y-2 ${exp.location ? "" : "mt-4"}`}>
+            {exp.bullets.map((bullet, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-2 text-sm text-gray-600"
+              >
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0" />
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </>
       )}
-
-      <ul className={`space-y-2 ${exp.location ? "" : "mt-4"}`}>
-        {exp.bullets.map((bullet, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0" />
-            {bullet}
-          </li>
-        ))}
-      </ul>
     </>
   );
 

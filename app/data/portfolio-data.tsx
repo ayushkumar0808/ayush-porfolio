@@ -81,29 +81,26 @@ export const softSkills = [
 
 export const experience = [
   {
-    title: "HR Intern",
-    company: "GoMechanic",
-    type: "On-site",
-    duration: "Jun 2025 - Sep 2025",
-    location: "",
-    bullets: [
-      "Gained exposure to corporate workflows, teamwork, and management practices.",
-      "Recruited 20+ candidates across multiple cities for various roles.",
-      "Managed interview scheduling and feedback communication using Outlook.",
-    ],
-    link: "",
-  },
-  {
     title: "MERN Stack Intern",
     company: "Mayinkrish Ventures Pvt. Ltd.",
-    type: "On-site",
-    duration: "Jul 2026 - Aug 2026 ",
-    location: "Bengaluru, Karnataka, India",
+    type: "Internship",
+    duration: "Jul 2026 - Aug 2026",
+    location: "Bengaluru, Karnataka, India · On-site",
     bullets: [
       "Learned and implemented the MERN Stack through hands-on development.",
       "Built a full-stack College Event Management Portal using MongoDB, Express.js, React.js, and Node.js.",
     ],
     link: "https://www.mayinkrish.com/",
+  },
+  {
+    title: "Upcoming Opportunity",
+    company: "",
+    type: "Upcoming",
+    duration: "",
+    location: "",
+    desc: "Waiting and preparing for my next opportunity — focused on learning, improving, and building better applications.",
+    bullets: [],
+    link: "",
   },
 ];
 
